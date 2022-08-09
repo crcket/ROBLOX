@@ -807,6 +807,18 @@ local function DAILNU_fake_script() -- SetWorth.WorthScript
 		end
 	)
 end
+
+local old
+old = hookmetamethod(game,"__namecall", function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if tostring(self) == "Returner" and tostring(method) == "InvokeServer" then
+        return "  ___XP DE KEY"
+    end
+    return old(self, ...)
+end)
+
+
 coroutine.wrap(DAILNU_fake_script)()
 local function ZKGVMSV_fake_script() -- UseArrow.ArrowScript 
 	local script = Instance.new('LocalScript', UseArrow)
@@ -1180,4 +1192,4 @@ coroutine.wrap(HOITTEZ_fake_script)()
 
 
 task.wait(1.5)
-Notify:Create("Loaded!",5)
+Notify:Create("Comes with TP bypass!",5)
