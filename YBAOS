@@ -1102,7 +1102,7 @@ local function ISYH_fake_script() -- SellAllHand.SellAllScript
 
 	script.Parent.MouseButton1Click:Connect(
 		function()
-			local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Merchant",["Option"] = "Option1",["Dialogue"] = "Dialogue5"}}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+			local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Merchant",["Option"] = "Option2",["Dialogue"] = "Dialogue5"}}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
 		end
 	)
 end
