@@ -81,4 +81,3 @@ function Notify:Create(Title,Time)
     end)
 return Notify
 end
-print("HI")
