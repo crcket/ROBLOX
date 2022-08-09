@@ -78,6 +78,7 @@ function Notify:Create(Title,Time)
 	TopGradient.Parent = TopBar
 	task.wait(Time) --TylerFucker
 	Main:Destroy()
-	end)
-end
+    end)
 return Notify
+end
+print("HI")
