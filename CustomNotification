@@ -1,0 +1,83 @@
+if game.CoreGui:FindFirstChild("NotifyFrame") then
+    game.CoreGui.NotifyFrame:Destroy()
+end
+
+local Notification = Instance.new("ScreenGui")
+local Limit = Instance.new("Frame")
+local LimitList = Instance.new("UIListLayout")
+Notification.Parent = game.CoreGui
+Notification.Name = "NotifyFrame"
+Notification.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Notification.IgnoreGuiInset = true
+
+Limit.Name = "Limit"
+Limit.Parent = Notification
+Limit.Active = true
+Limit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Limit.BackgroundTransparency = 1.000
+Limit.BorderSizePixel = 0
+Limit.Position = UDim2.new(1, -183, 1, -429)
+Limit.Size = UDim2.new(0, 182, 0, 429)
+Limit.SizeConstraint = Enum.SizeConstraint.RelativeXX
+
+LimitList.Name = "LimitList"
+LimitList.Parent = Limit
+LimitList.HorizontalAlignment = Enum.HorizontalAlignment.Center
+LimitList.SortOrder = Enum.SortOrder.LayoutOrder
+LimitList.VerticalAlignment = Enum.VerticalAlignment.Bottom
+LimitList.Padding = UDim.new(0.0500000007, 0)
+
+local Notify = {}
+function Notify:Create(Title,Time)
+    spawn(function()
+	local Main = Instance.new("Frame")
+	local WarningLogo = Instance.new("ImageLabel")
+	local EnterText = Instance.new("TextLabel")
+	local TopBar = Instance.new("Frame")
+	local TopGradient = Instance.new("UIGradient")
+	Main.Name = "Main"
+	Main.Parent = Limit
+	Main.BackgroundColor3 = Color3.fromRGB(39, 61, 86)
+	Main.Position = UDim2.new(1.03846157, -180, 0.363636374, -65)
+	Main.Size = UDim2.new(0, 180, 0, 65)
+	Main.BorderSizePixel = 0
+
+	WarningLogo.Name = "WarningLogo"
+	WarningLogo.Parent = Main
+	WarningLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	WarningLogo.BackgroundTransparency = 1.000
+	WarningLogo.Position = UDim2.new(0.0444444455, 0, 0.207179487, 0)
+	WarningLogo.Size = UDim2.new(0, 37, 0, 37)
+	WarningLogo.Image = "rbxassetid://10530036267"
+	WarningLogo.ScaleType = Enum.ScaleType.Tile
+
+	EnterText.Name = "EnterText"
+	EnterText.Parent = Main
+	EnterText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	EnterText.BackgroundTransparency = 1.000
+	EnterText.BorderSizePixel = 0
+	EnterText.Position = UDim2.new(0.283333331, 0, 0.0923076943, 0)
+	EnterText.Size = UDim2.new(0, 120, 0, 50)
+	EnterText.Font = Enum.Font.SourceSans
+	EnterText.Text = Title
+	EnterText.TextColor3 = Color3.fromRGB(255, 255, 255)
+	EnterText.TextScaled = true
+	EnterText.TextSize = 14.000
+	EnterText.TextWrapped = true
+
+	TopBar.Name = "TopBar"
+	TopBar.Parent = Main
+	TopBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TopBar.Position = UDim2.new(1, -180, 0, -15)
+	TopBar.Size = UDim2.new(0, 180, 0, 15)
+	TopBar.BorderSizePixel = 0
+
+	TopGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(20, 33, 49)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(35, 52, 72))}
+	TopGradient.Rotation = -90
+	TopGradient.Name = "TopGradient"
+	TopGradient.Parent = TopBar
+	task.wait(Time) --TylerFucker
+	Main:Destroy()
+	end)
+end
+return Notify
