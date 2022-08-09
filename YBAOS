@@ -1191,3 +1191,4 @@ coroutine.wrap(HOITTEZ_fake_script)()
 
 task.wait(1.5)
 Notify:Create("Comes with TP bypass!",5)
+Notify:Create("FIXED",3)
