@@ -1147,12 +1147,10 @@ local function LVHVSX_fake_script() -- JeezTp.JeezTpScript
 
 	script.Parent.MouseButton1Click:Connect(
 		function()
-			local OLDHEAD = game.Players.LocalPlayer.Character.Head:Clone()
-			local HEAD = game.Players.LocalPlayer.Character.Head
-			OLDHEAD.Parent = game.CoreGui
-			HEAD:Destroy()
-			wait()
-			OLDHEAD.Parent = game.Players.LocalPlayer.Character
+			if game:GetService("Workspace").Dialogues:FindFirstChild("Jesus") then
+   				 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Dialogues.Jesus.Head.CFrame
+				end
+
 		end
 	)
 end
