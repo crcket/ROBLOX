@@ -661,8 +661,10 @@ end
 coroutine.wrap(DRFYH_fake_script)()
 local function POKLVYG_fake_script() -- SkillPointsLabel.LocalScript 
 	local script = Instance.new('LocalScript', SkillPointsLabel)
-
-	script.Parent.Text = game:GetService("Players").LocalPlayer.PlayerGui.HUD.SkillTree.SkillPoints.Text
+	script.Parent.Text = "Skill Points: "..game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Value
+    game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Changed:Connect(function()
+	script.Parent.Text = "Skill Points: "..game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Value
+    end)
 end
 coroutine.wrap(POKLVYG_fake_script)()
 
@@ -835,12 +837,16 @@ local function ZKGVMSV_fake_script() -- UseArrow.ArrowScript
 					game.Players.LocalPlayer.Character[b.Name]:Activate();
 				end;
 			end;
-			wait(0);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui.DialogueGui.Frame.ClickContinue.MouseButton1Click)) do
+			task.wait(0.5);
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
 				v.Function();
 			end;
-			wait(0);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui.DialogueGui.Frame.Options.Option1.TextButton.MouseButton1Click)) do
+			task.wait(0.5);
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
+				v.Function();
+			end;
+			task.wait(0.5)
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
 				v.Function();
 			end;
 		end
@@ -863,12 +869,16 @@ local function QOEAGU_fake_script() -- UseRoka.RokaScript
 					game.Players.LocalPlayer.Character[b.Name]:Activate();
 				end;
 			end;
-			wait(0);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui.DialogueGui.Frame.ClickContinue.MouseButton1Click)) do
+			task.wait(0.5);
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
 				v.Function();
 			end;
-			wait(0);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui.DialogueGui.Frame.Options.Option1.TextButton.MouseButton1Click)) do
+			task.wait(0.5);
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
+				v.Function();
+			end;
+			task.wait(0.5)
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
 				v.Function();
 			end;
 		end
@@ -1191,4 +1201,4 @@ coroutine.wrap(HOITTEZ_fake_script)()
 
 task.wait(1.5)
 Notify:Create("Comes with TP bypass!",5)
-Notify:Create("FIXED",3)
+Notify:Create("Fixed Arrow/Roka use..",1)
