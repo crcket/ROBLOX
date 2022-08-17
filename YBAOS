@@ -582,7 +582,7 @@ local SkillPointsLabel = Instance.new("TextLabel")
 --Properties:
 
 Info.Name = "Info"
-Info.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Info.Parent = game.CoreGui
 Info.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = Info
