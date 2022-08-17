@@ -1,3 +1,4 @@
+notify("hi","hello")
 local Hii = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local TopContainEverything = Instance.new("Frame")
