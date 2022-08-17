@@ -11,24 +11,29 @@ local Line1 = Instance.new("Frame")
 local Line2 = Instance.new("Frame")
 local Line3 = Instance.new("Frame")
 local Line4 = Instance.new("Frame")
+LayoutGames.Name = "LayoutGames"
+LayoutGames.Parent = ListLay
+LayoutGames.HorizontalAlignment = Enum.HorizontalAlignment.Center
+LayoutGames.SortOrder = Enum.SortOrder.LayoutOrder
+LayoutGames.Padding = UDim.new(0.00100000005, 1)
+local ListLay = Instance.new("Frame")
+local LayoutGames = Instance.new("UIListLayout")
+ListLay.Name = "ListLay"
+ListLay.Parent = TopContainEverything
+ListLay.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+ListLay.BorderSizePixel = 0
+ListLay.Position = UDim2.new(0.654098332, 0, 2.11111116, 0)
+ListLay.Size = UDim2.new(0, 210, 0, 275)
+
+LayoutGames.Name = "LayoutGames"
+LayoutGames.Parent = ListLay
+LayoutGames.HorizontalAlignment = Enum.HorizontalAlignment.Center
+LayoutGames.SortOrder = Enum.SortOrder.LayoutOrder
+LayoutGames.Padding = UDim.new(0.00100000005, 1)
 local util = {}
 function util:makegame(Title,gamescript)
-	local ListLay = Instance.new("Frame")
-	local LayoutGames = Instance.new("UIListLayout")
 	local gameExample = Instance.new("TextButton")
 	local gameBar = Instance.new("Frame")
-	ListLay.Name = "ListLay"
-	ListLay.Parent = TopContainEverything
-	ListLay.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	ListLay.BorderSizePixel = 0
-	ListLay.Position = UDim2.new(0.654098332, 0, 2.11111116, 0)
-	ListLay.Size = UDim2.new(0, 210, 0, 275)
-
-	LayoutGames.Name = "LayoutGames"
-	LayoutGames.Parent = ListLay
-	LayoutGames.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	LayoutGames.SortOrder = Enum.SortOrder.LayoutOrder
-	LayoutGames.Padding = UDim.new(0.00100000005, 1)
 
 	gameExample.Name = "gameExample"
 	gameExample.Parent = ListLay
