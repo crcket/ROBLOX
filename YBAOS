@@ -1,1203 +1,211 @@
-local Eight = Instance.new("ScreenGui")
-local topBar = Instance.new("Frame")
-local topGrad = Instance.new("UIGradient")
-local title = Instance.new("TextLabel")
-local DestroyUI = Instance.new("TextButton")
-local minimizeCorner = Instance.new("UICorner")
-local minimizeGrad = Instance.new("UIGradient")
-local MinimizeUI = Instance.new("TextButton")
-local invisCorner = Instance.new("UICorner")
-local invisGrad = Instance.new("UIGradient")
-local mainFrame = Instance.new("Frame")
-local mainGrad = Instance.new("UIGradient")
-local buttonHolder = Instance.new("Frame")
-local bHolderGrad = Instance.new("UIGradient")
-local bHolderLayout = Instance.new("UIListLayout")
-local standsButton = Instance.new("TextButton")
-local sButtonFrame = Instance.new("Frame")
-local UIListLayout = Instance.new("UIListLayout")
-local WorthinessInput = Instance.new("TextBox")
-local SetWorth = Instance.new("TextButton")
-local UseArrow = Instance.new("TextButton")
-local UseRoka = Instance.new("TextButton")
-local UseRib = Instance.new("TextButton")
-local PauseRage = Instance.new("TextButton")
-local racesButton = Instance.new("TextButton")
-local raceButtonFrame = Instance.new("Frame")
-local UIListLayout_2 = Instance.new("UIListLayout")
-local RemoveVamp = Instance.new("TextButton")
-local RemoveStyle = Instance.new("TextButton")
-local BuySpin = Instance.new("TextButton")
-local BuyHamon = Instance.new("TextButton")
-local BuyBoxing = Instance.new("TextButton")
-local sbrButton = Instance.new("TextButton")
-local sbrButtonFrame = Instance.new("Frame")
-local UIListLayout_3 = Instance.new("UIListLayout")
-local BringHorse = Instance.new("TextButton")
-local HighHorse = Instance.new("TextButton")
-local FixHorseHeight = Instance.new("TextButton")
-local SitDown = Instance.new("TextButton")
-local MiscButton = Instance.new("TextButton")
-local MiscButtonFrame = Instance.new("Frame")
-local UIListLayout_4 = Instance.new("UIListLayout")
-local SellAllHand = Instance.new("TextButton")
-local SellOneHand = Instance.new("TextButton")
-local BuyRequiem = Instance.new("TextButton")
-local Reset1v1 = Instance.new("TextButton")
-local JeezTp = Instance.new("TextButton")
-local YourUser = Instance.new("TextLabel")
-local YourId = Instance.new("TextLabel")
-
-local Info = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Frame_2 = Instance.new("Frame")
-local UIGradient = Instance.new("UIGradient")
-local StandLabel = Instance.new("TextLabel")
-local ArrowSkinLabel = Instance.new("TextLabel")
-local SkillPointsLabel = Instance.new("TextLabel")
-local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
-getgenv().Notify = loadstring(game:HttpGet("https://gist.githubusercontent.com/crcket/1692f2c79673975b76938a5e391c06ec/raw"))()
-
---Properties:
-
-Eight.Name = "Eight"
-Eight.Parent = game.CoreGui
-Eight.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Eight.ResetOnSpawn = false
-
-topBar.Name = "topBar"
-topBar.Parent = Eight
-topBar.Active = true
-topBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-topBar.BorderSizePixel = 0
-topBar.Position = UDim2.new(0.146878839, 0, 0.0923243165, 0)
-topBar.Size = UDim2.new(0, 513, 0, 30)
-topBar.Selectable = true
-
-topGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(20, 36, 59)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 51, 82))}
-topGrad.Name = "topGrad"
-topGrad.Parent = topBar
-
-title.Name = "title"
-title.Parent = topBar
-title.BackgroundColor3 = Color3.fromRGB(14, 26, 42)
-title.BorderSizePixel = 0
-title.Size = UDim2.new(0, 120, 0, 30)
-title.Font = Enum.Font.SourceSans
-title.RichText = true
-title.Text = "<font color=\"#f5d973\">Y</font><font color=\"#c173f5\">B</font><font color=\"#e9f261\">A</font> <b>Stuff,,,</b>"
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
-title.TextSize = 25.000
-
-DestroyUI.Name = "DestroyUI"
-DestroyUI.Parent = topBar
-DestroyUI.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DestroyUI.Position = UDim2.new(0.944705904, 0, 0.183333337, 0)
-DestroyUI.Size = UDim2.new(0, 19, 0, 19)
-DestroyUI.Font = Enum.Font.SourceSans
-DestroyUI.Text = ""
-DestroyUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-DestroyUI.TextSize = 14.000
-
-minimizeCorner.CornerRadius = UDim.new(10000, 100000)
-minimizeCorner.Name = "minimizeCorner"
-minimizeCorner.Parent = DestroyUI
-
-minimizeGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(248, 67, 118)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 169, 94))}
-minimizeGrad.Name = "minimizeGrad"
-minimizeGrad.Parent = DestroyUI
-
-MinimizeUI.Name = "MinimizeUI"
-MinimizeUI.Parent = topBar
-MinimizeUI.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-MinimizeUI.Position = UDim2.new(0.894705892, 0, 0.183333337, 0)
-MinimizeUI.Size = UDim2.new(0, 19, 0, 19)
-MinimizeUI.Font = Enum.Font.SourceSans
-MinimizeUI.Text = ""
-MinimizeUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-MinimizeUI.TextSize = 14.000
-
-invisCorner.CornerRadius = UDim.new(10000, 100000)
-invisCorner.Name = "invisCorner"
-invisCorner.Parent = MinimizeUI
-
-invisGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 247, 254)), ColorSequenceKeypoint.new(0.00, Color3.fromRGB(69, 150, 254)), ColorSequenceKeypoint.new(0.99, Color3.fromRGB(9, 233, 254)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(72, 147, 255))}
-invisGrad.Name = "invisGrad"
-invisGrad.Parent = MinimizeUI
-
-mainFrame.Name = "mainFrame"
-mainFrame.Parent = topBar
-mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-mainFrame.BorderSizePixel = 0
-mainFrame.ClipsDescendants = true
-mainFrame.Position = UDim2.new(-3.43997963e-05, 0, 0.967000008, 0)
-mainFrame.Size = UDim2.new(0, 513, 0, 330)
-
-mainGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(38, 57, 87)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(45, 75, 109))}
-mainGrad.Rotation = 90
-mainGrad.Name = "mainGrad"
-mainGrad.Parent = mainFrame
-
-buttonHolder.Name = "buttonHolder"
-buttonHolder.Parent = mainFrame
-buttonHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-buttonHolder.BorderSizePixel = 0
-buttonHolder.Size = UDim2.new(0, 120, 0, 330)
-
-bHolderGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27, 45, 66)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(18, 26, 45))}
-bHolderGrad.Rotation = 45
-bHolderGrad.Name = "bHolderGrad"
-bHolderGrad.Parent = buttonHolder
-
-bHolderLayout.Name = "bHolderLayout"
-bHolderLayout.Parent = buttonHolder
-bHolderLayout.SortOrder = Enum.SortOrder.LayoutOrder
-
-standsButton.Name = "standsButton"
-standsButton.Parent = buttonHolder
-standsButton.Active = false
-standsButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-standsButton.BackgroundTransparency = 1.000
-standsButton.Size = UDim2.new(0, 120, 0, 30)
-standsButton.Font = Enum.Font.SourceSans
-standsButton.Text = "Stands"
-standsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-standsButton.TextSize = 30.000
-
-sButtonFrame.Name = "sButtonFrame"
-sButtonFrame.Parent = standsButton
-sButtonFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-sButtonFrame.BackgroundTransparency = 1.000
-sButtonFrame.Position = UDim2.new(1, 0, 0, 0)
-sButtonFrame.Size = UDim2.new(0, 390, 0, 330)
-
-UIListLayout.Parent = sButtonFrame
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Padding = UDim.new(0.00999999978, 0)
-
-WorthinessInput.Name = "WorthinessInput"
-WorthinessInput.Parent = sButtonFrame
-WorthinessInput.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-WorthinessInput.BackgroundTransparency = 0.800
-WorthinessInput.BorderColor3 = Color3.fromRGB(27, 42, 53)
-WorthinessInput.BorderSizePixel = 0
-WorthinessInput.Size = UDim2.new(0, 390, 0, 50)
-WorthinessInput.Font = Enum.Font.SourceSans
-WorthinessInput.PlaceholderText = "Enter Worthiness #"
-WorthinessInput.Text = ""
-WorthinessInput.TextColor3 = Color3.fromRGB(255, 255, 255)
-WorthinessInput.TextSize = 30.000
-WorthinessInput.TextWrapped = true
-
-SetWorth.Name = "SetWorth"
-SetWorth.Parent = sButtonFrame
-SetWorth.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-SetWorth.BackgroundTransparency = 0.800
-SetWorth.BorderColor3 = Color3.fromRGB(27, 42, 53)
-SetWorth.BorderSizePixel = 0
-SetWorth.Size = UDim2.new(0, 390, 0, 50)
-SetWorth.Font = Enum.Font.SourceSans
-SetWorth.Text = "Apply Worthiness"
-SetWorth.TextColor3 = Color3.fromRGB(255, 255, 255)
-SetWorth.TextSize = 30.000
-SetWorth.TextWrapped = true
-
-UseArrow.Name = "UseArrow"
-UseArrow.Parent = sButtonFrame
-UseArrow.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-UseArrow.BackgroundTransparency = 0.800
-UseArrow.BorderColor3 = Color3.fromRGB(27, 42, 53)
-UseArrow.BorderSizePixel = 0
-UseArrow.Size = UDim2.new(0, 390, 0, 50)
-UseArrow.Font = Enum.Font.SourceSans
-UseArrow.Text = "Use Arrow"
-UseArrow.TextColor3 = Color3.fromRGB(255, 255, 255)
-UseArrow.TextSize = 30.000
-UseArrow.TextWrapped = true
-
-UseRoka.Name = "UseRoka"
-UseRoka.Parent = sButtonFrame
-UseRoka.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-UseRoka.BackgroundTransparency = 0.800
-UseRoka.BorderColor3 = Color3.fromRGB(27, 42, 53)
-UseRoka.BorderSizePixel = 0
-UseRoka.Size = UDim2.new(0, 390, 0, 50)
-UseRoka.Font = Enum.Font.SourceSans
-UseRoka.Text = "Use Rokakaka"
-UseRoka.TextColor3 = Color3.fromRGB(255, 255, 255)
-UseRoka.TextSize = 30.000
-UseRoka.TextWrapped = true
-
-UseRib.Name = "UseRib"
-UseRib.Parent = sButtonFrame
-UseRib.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-UseRib.BackgroundTransparency = 0.800
-UseRib.BorderColor3 = Color3.fromRGB(27, 42, 53)
-UseRib.BorderSizePixel = 0
-UseRib.Size = UDim2.new(0, 390, 0, 50)
-UseRib.Font = Enum.Font.SourceSans
-UseRib.Text = "Use Ribcage"
-UseRib.TextColor3 = Color3.fromRGB(255, 255, 255)
-UseRib.TextSize = 30.000
-UseRib.TextWrapped = true
-
-PauseRage.Name = "PauseRage"
-PauseRage.Parent = sButtonFrame
-PauseRage.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-PauseRage.BackgroundTransparency = 0.800
-PauseRage.BorderColor3 = Color3.fromRGB(27, 42, 53)
-PauseRage.BorderSizePixel = 0
-PauseRage.Size = UDim2.new(0, 390, 0, 50)
-PauseRage.Font = Enum.Font.SourceSans
-PauseRage.Text = "Pause Rage"
-PauseRage.TextColor3 = Color3.fromRGB(255, 255, 255)
-PauseRage.TextSize = 30.000
-PauseRage.TextWrapped = true
-
-racesButton.Name = "racesButton"
-racesButton.Parent = buttonHolder
-racesButton.Active = false
-racesButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-racesButton.BackgroundTransparency = 1.000
-racesButton.Size = UDim2.new(0, 120, 0, 30)
-racesButton.Font = Enum.Font.SourceSans
-racesButton.Text = "Race/Style"
-racesButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-racesButton.TextSize = 30.000
-
-raceButtonFrame.Name = "raceButtonFrame"
-raceButtonFrame.Parent = racesButton
-raceButtonFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-raceButtonFrame.BackgroundTransparency = 1.000
-raceButtonFrame.Position = UDim2.new(1, 0, -1, 0)
-raceButtonFrame.Size = UDim2.new(0, 390, 0, 330)
-raceButtonFrame.Visible = false
-
-UIListLayout_2.Parent = raceButtonFrame
-UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout_2.Padding = UDim.new(0.00999999978, 0)
-
-RemoveVamp.Name = "RemoveVamp"
-RemoveVamp.Parent = raceButtonFrame
-RemoveVamp.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-RemoveVamp.BackgroundTransparency = 0.800
-RemoveVamp.BorderColor3 = Color3.fromRGB(27, 42, 53)
-RemoveVamp.BorderSizePixel = 0
-RemoveVamp.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-RemoveVamp.Size = UDim2.new(0, 390, 0, 50)
-RemoveVamp.Font = Enum.Font.SourceSans
-RemoveVamp.RichText = true
-
-RemoveVamp.Text = "Remove <font color = \"rgb(195,50,235)\">Vampire</font>"
-RemoveVamp.TextColor3 = Color3.fromRGB(255, 255, 255)
-RemoveVamp.TextSize = 30.000
-RemoveVamp.TextWrapped = true
-
-RemoveStyle.Name = "RemoveStyle"
-RemoveStyle.Parent = raceButtonFrame
-RemoveStyle.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-RemoveStyle.BackgroundTransparency = 0.800
-RemoveStyle.BorderColor3 = Color3.fromRGB(27, 42, 53)
-RemoveStyle.BorderSizePixel = 0
-RemoveStyle.Size = UDim2.new(0, 390, 0, 50)
-RemoveStyle.Font = Enum.Font.SourceSans
-RemoveStyle.Text = "Remove Fighting Style"
-RemoveStyle.TextColor3 = Color3.fromRGB(255, 255, 255)
-RemoveStyle.TextSize = 30.000
-RemoveStyle.TextWrapped = true
-
-BuySpin.Name = "BuySpin"
-BuySpin.Parent = raceButtonFrame
-BuySpin.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-BuySpin.BackgroundTransparency = 0.800
-BuySpin.BorderColor3 = Color3.fromRGB(27, 42, 53)
-BuySpin.BorderSizePixel = 0
-BuySpin.Size = UDim2.new(0, 390, 0, 50)
-BuySpin.Font = Enum.Font.SourceSans
-BuySpin.RichText = true
-BuySpin.Text = "Buy <font color = \"rgb(164, 237, 74)\">Spin</font>"
-BuySpin.TextColor3 = Color3.fromRGB(255, 255, 255)
-BuySpin.TextSize = 30.000
-BuySpin.TextWrapped = true
-
-BuyHamon.Name = "BuyHamon"
-BuyHamon.Parent = raceButtonFrame
-BuyHamon.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-BuyHamon.BackgroundTransparency = 0.800
-BuyHamon.BorderColor3 = Color3.fromRGB(27, 42, 53)
-BuyHamon.BorderSizePixel = 0
-BuyHamon.Size = UDim2.new(0, 390, 0, 50)
-BuyHamon.Font = Enum.Font.SourceSans
-BuyHamon.RichText = true
-BuyHamon.Text = "Buy <font color = \"rgb(240,230,75)\">Hamon</font>"
-BuyHamon.TextColor3 = Color3.fromRGB(255, 255, 255)
-BuyHamon.TextSize = 30.000
-BuyHamon.TextWrapped = true
-
-BuyBoxing.Name = "BuyBoxing"
-BuyBoxing.Parent = raceButtonFrame
-BuyBoxing.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-BuyBoxing.BackgroundTransparency = 0.800
-BuyBoxing.BorderColor3 = Color3.fromRGB(27, 42, 53)
-BuyBoxing.BorderSizePixel = 0
-BuyBoxing.Size = UDim2.new(0, 390, 0, 50)
-BuyBoxing.Font = Enum.Font.SourceSans
-BuyBoxing.RichText = true
-BuyBoxing.Text = "Buy <font color = \"rgb(255,20,20)\">Boxing</font>"
-BuyBoxing.TextColor3 = Color3.fromRGB(255, 255, 255)
-BuyBoxing.TextSize = 30.000
-BuyBoxing.TextWrapped = true
-
-sbrButton.Name = "sbrButton"
-sbrButton.Parent = buttonHolder
-sbrButton.Active = false
-sbrButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-sbrButton.BackgroundTransparency = 1.000
-sbrButton.Size = UDim2.new(0, 120, 0, 30)
-sbrButton.Font = Enum.Font.SourceSans
-sbrButton.Text = "SBR"
-sbrButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-sbrButton.TextScaled = true
-sbrButton.TextSize = 30.000
-sbrButton.TextWrapped = true
-
-sbrButtonFrame.Name = "sbrButtonFrame"
-sbrButtonFrame.Parent = sbrButton
-sbrButtonFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-sbrButtonFrame.BackgroundTransparency = 1.000
-sbrButtonFrame.Position = UDim2.new(1, 0, -2, 0)
-sbrButtonFrame.Size = UDim2.new(0, 390, 0, 330)
-sbrButtonFrame.Visible = false
-
-UIListLayout_3.Parent = sbrButtonFrame
-UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout_3.Padding = UDim.new(0.00999999978, 0)
-
-BringHorse.Name = "BringHorse"
-BringHorse.Parent = sbrButtonFrame
-BringHorse.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-BringHorse.BackgroundTransparency = 0.800
-BringHorse.BorderColor3 = Color3.fromRGB(27, 42, 53)
-BringHorse.BorderSizePixel = 0
-BringHorse.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-BringHorse.Size = UDim2.new(0, 390, 0, 50)
-BringHorse.Font = Enum.Font.SourceSans
-BringHorse.Text = "Bring Horse"
-BringHorse.TextColor3 = Color3.fromRGB(255, 255, 255)
-BringHorse.TextSize = 30.000
-BringHorse.TextWrapped = true
-
-HighHorse.Name = "HighHorse"
-HighHorse.Parent = sbrButtonFrame
-HighHorse.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-HighHorse.BackgroundTransparency = 0.800
-HighHorse.BorderColor3 = Color3.fromRGB(27, 42, 53)
-HighHorse.BorderSizePixel = 0
-HighHorse.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-HighHorse.Size = UDim2.new(0, 390, 0, 50)
-HighHorse.Font = Enum.Font.SourceSans
-HighHorse.Text = "High Horse"
-HighHorse.TextColor3 = Color3.fromRGB(255, 255, 255)
-HighHorse.TextSize = 30.000
-HighHorse.TextWrapped = true
-
-FixHorseHeight.Name = "FixHorseHeight"
-FixHorseHeight.Parent = sbrButtonFrame
-FixHorseHeight.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-FixHorseHeight.BackgroundTransparency = 0.800
-FixHorseHeight.BorderColor3 = Color3.fromRGB(27, 42, 53)
-FixHorseHeight.BorderSizePixel = 0
-FixHorseHeight.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-FixHorseHeight.Size = UDim2.new(0, 390, 0, 50)
-FixHorseHeight.Font = Enum.Font.SourceSans
-FixHorseHeight.Text = "Fix Horse Height"
-FixHorseHeight.TextColor3 = Color3.fromRGB(255, 255, 255)
-FixHorseHeight.TextSize = 30.000
-FixHorseHeight.TextWrapped = true
-
-SitDown.Name = "SitDown"
-SitDown.Parent = sbrButtonFrame
-SitDown.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-SitDown.BackgroundTransparency = 0.800
-SitDown.BorderColor3 = Color3.fromRGB(27, 42, 53)
-SitDown.BorderSizePixel = 0
-SitDown.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-SitDown.Size = UDim2.new(0, 390, 0, 50)
-SitDown.Font = Enum.Font.SourceSans
-SitDown.Text = "Sit"
-SitDown.TextColor3 = Color3.fromRGB(255, 255, 255)
-SitDown.TextSize = 30.000
-SitDown.TextWrapped = true
-
-MiscButton.Name = "MiscButton"
-MiscButton.Parent = buttonHolder
-MiscButton.Active = false
-MiscButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-MiscButton.BackgroundTransparency = 1.000
-MiscButton.Size = UDim2.new(0, 120, 0, 30)
-MiscButton.Font = Enum.Font.SourceSans
-MiscButton.Text = "Misc."
-MiscButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-MiscButton.TextSize = 30.000
-
-MiscButtonFrame.Name = "MiscButtonFrame"
-MiscButtonFrame.Parent = MiscButton
-MiscButtonFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-MiscButtonFrame.BackgroundTransparency = 1.000
-MiscButtonFrame.Position = UDim2.new(1.02499998, 0, -3, 0)
-MiscButtonFrame.Size = UDim2.new(0, 390, 0, 330)
-MiscButtonFrame.Visible = false
-
-UIListLayout_4.Parent = MiscButtonFrame
-UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout_4.Padding = UDim.new(0.00999999978, 0)
-
-SellAllHand.Name = "SellAllHand"
-SellAllHand.Parent = MiscButtonFrame
-SellAllHand.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-SellAllHand.BackgroundTransparency = 0.800
-SellAllHand.BorderColor3 = Color3.fromRGB(27, 42, 53)
-SellAllHand.BorderSizePixel = 0
-SellAllHand.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-SellAllHand.Size = UDim2.new(0, 390, 0, 50)
-SellAllHand.Font = Enum.Font.SourceSans
-SellAllHand.RichText = true
-SellAllHand.Text = "Sell <font color = \"rgb(255,50,50)\">all</font> in hand"
-SellAllHand.TextColor3 = Color3.fromRGB(255, 255, 255)
-SellAllHand.TextSize = 30.000
-SellAllHand.TextWrapped = true
-
-SellOneHand.Name = "SellOneHand"
-SellOneHand.Parent = MiscButtonFrame
-SellOneHand.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-SellOneHand.BackgroundTransparency = 0.800
-SellOneHand.BorderColor3 = Color3.fromRGB(27, 42, 53)
-SellOneHand.BorderSizePixel = 0
-SellOneHand.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-SellOneHand.Size = UDim2.new(0, 390, 0, 50)
-SellOneHand.Font = Enum.Font.SourceSans
-SellOneHand.RichText = true
-SellOneHand.Text = "Sell <font color = \"rgb(50,255,50)\">one</font> in hand"
-SellOneHand.TextColor3 = Color3.fromRGB(255, 255, 255)
-SellOneHand.TextSize = 30.000
-SellOneHand.TextWrapped = true
-
-BuyRequiem.Name = "BuyRequiem"
-BuyRequiem.Parent = MiscButtonFrame
-BuyRequiem.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-BuyRequiem.BackgroundTransparency = 0.800
-BuyRequiem.BorderColor3 = Color3.fromRGB(27, 42, 53)
-BuyRequiem.BorderSizePixel = 0
-BuyRequiem.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-BuyRequiem.Size = UDim2.new(0, 390, 0, 50)
-BuyRequiem.Font = Enum.Font.SourceSans
-BuyRequiem.Text = "Buy Requiem Arrow"
-BuyRequiem.TextColor3 = Color3.fromRGB(255, 255, 255)
-BuyRequiem.TextSize = 30.000
-BuyRequiem.TextWrapped = true
-
-Reset1v1.Name = "Reset1v1"
-Reset1v1.Parent = MiscButtonFrame
-Reset1v1.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-Reset1v1.BackgroundTransparency = 0.800
-Reset1v1.BorderColor3 = Color3.fromRGB(27, 42, 53)
-Reset1v1.BorderSizePixel = 0
-Reset1v1.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-Reset1v1.Size = UDim2.new(0, 390, 0, 50)
-Reset1v1.Font = Enum.Font.SourceSans
-Reset1v1.Text = "1v1's reset"
-Reset1v1.TextColor3 = Color3.fromRGB(255, 255, 255)
-Reset1v1.TextSize = 30.000
-Reset1v1.TextWrapped = true
-
-JeezTp.Name = "JeezTp"
-JeezTp.Parent = MiscButtonFrame
-JeezTp.BackgroundColor3 = Color3.fromRGB(27, 45, 66)
-JeezTp.BackgroundTransparency = 0.800
-JeezTp.BorderColor3 = Color3.fromRGB(27, 42, 53)
-JeezTp.BorderSizePixel = 0
-JeezTp.Position = UDim2.new(0.358974367, 0, 0.693939388, 0)
-JeezTp.Size = UDim2.new(0, 390, 0, 50)
-JeezTp.Font = Enum.Font.SourceSans
-JeezTp.Text = "Teleport to Jesus"
-JeezTp.TextColor3 = Color3.fromRGB(255, 255, 255)
-JeezTp.TextSize = 30.000
-JeezTp.TextWrapped = true
-
-YourUser.Name = "YourUser"
-YourUser.Parent = mainFrame
-YourUser.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-YourUser.BackgroundTransparency = 1.000
-YourUser.BorderSizePixel = 0
-YourUser.ClipsDescendants = true
-YourUser.Position = UDim2.new(0, 0, 0.863636374, 0)
-YourUser.Size = UDim2.new(0, 120, 0, 22)
-YourUser.Font = Enum.Font.SourceSans
-YourUser.Text = "USERNAME"
-YourUser.TextColor3 = Color3.fromRGB(255, 255, 255)
-YourUser.TextScaled = true
-YourUser.TextSize = 30.000
-YourUser.TextWrapped = true
-
-YourId.Name = "YourId"
-YourId.Parent = mainFrame
-YourId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-YourId.BackgroundTransparency = 1.000
-YourId.BorderSizePixel = 0
-YourId.ClipsDescendants = true
-YourId.Position = UDim2.new(0, 0, 0.930303037, 0)
-YourId.Size = UDim2.new(0, 120, 0, 23)
-YourId.Font = Enum.Font.SourceSans
-YourId.Text = "ROBLOXID"
-YourId.TextColor3 = Color3.fromRGB(255, 255, 255)
-YourId.TextScaled = true
-YourId.TextSize = 30.000
-YourId.TextWrapped = true
-
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local Info = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Frame_2 = Instance.new("Frame")
-local UIGradient = Instance.new("UIGradient")
-local StandLabel = Instance.new("TextLabel")
-local ArrowSkinLabel = Instance.new("TextLabel")
-local SkillPointsLabel = Instance.new("TextLabel")
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local Info = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Frame_2 = Instance.new("Frame")
-local UIGradient = Instance.new("UIGradient")
-local StandLabel = Instance.new("TextLabel")
-local ArrowSkinLabel = Instance.new("TextLabel")
-local SkillPointsLabel = Instance.new("TextLabel")
-
---Properties:
-
-Info.Name = "Info"
-Info.Parent = game.CoreGui
-Info.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Frame.Parent = Info
-Frame.BackgroundColor3 = Color3.fromRGB(51, 56, 103)
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(1, -150, 0.5, -55)
-Frame.Size = UDim2.new(0, 150, 0, 110)
-
-Frame_2.Parent = Frame
-Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_2.BorderSizePixel = 0
-Frame_2.Position = UDim2.new(1.33299994, -200, 0.550000012, -75)
-Frame_2.Size = UDim2.new(0, 150, 0, 15)
-
-UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(17, 21, 51)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(43, 49, 97))}
-UIGradient.Parent = Frame_2
-
-StandLabel.Name = "StandLabel"
-StandLabel.Parent = Frame_2
-StandLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-StandLabel.BackgroundTransparency = 1.000
-StandLabel.BorderSizePixel = 0
-StandLabel.Position = UDim2.new(0, 0, 0.933333337, 0)
-StandLabel.Size = UDim2.new(0, 150, 0, 36)
-StandLabel.Font = Enum.Font.SourceSans
-StandLabel.Text = "Stand:"
-StandLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-StandLabel.TextScaled = true
-StandLabel.TextSize = 14.000
-StandLabel.TextStrokeTransparency = 0.000
-StandLabel.TextWrapped = true
-
-ArrowSkinLabel.Name = "ArrowSkinLabel"
-ArrowSkinLabel.Parent = Frame_2
-ArrowSkinLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ArrowSkinLabel.BackgroundTransparency = 1.000
-ArrowSkinLabel.BorderSizePixel = 0
-ArrowSkinLabel.Position = UDim2.new(0, 0, 3.33333349, 0)
-ArrowSkinLabel.Size = UDim2.new(0, 150, 0, 36)
-ArrowSkinLabel.Font = Enum.Font.SourceSans
-ArrowSkinLabel.Text = "Arrows Since Skin: "
-ArrowSkinLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-ArrowSkinLabel.TextScaled = true
-ArrowSkinLabel.TextSize = 14.000
-ArrowSkinLabel.TextStrokeTransparency = 0.000
-ArrowSkinLabel.TextWrapped = true
-
-SkillPointsLabel.Name = "SkillPointsLabel"
-SkillPointsLabel.Parent = Frame_2
-SkillPointsLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SkillPointsLabel.BackgroundTransparency = 1.000
-SkillPointsLabel.BorderSizePixel = 0
-SkillPointsLabel.Position = UDim2.new(0, 0, 5.73333359, 0)
-SkillPointsLabel.Size = UDim2.new(0, 150, 0, 36)
-SkillPointsLabel.Font = Enum.Font.SourceSans
-SkillPointsLabel.Text = "Skill Points: "
-SkillPointsLabel.TextColor3 = Color3.fromRGB(0, 0, 255)
-SkillPointsLabel.TextScaled = true
-SkillPointsLabel.TextSize = 14.000
-SkillPointsLabel.TextStrokeTransparency = 0.000
-SkillPointsLabel.TextWrapped = true
-
--- Scripts:
-
-local function WWZED_fake_script() -- StandLabel.YourStandLbl 
-	local script = Instance.new('LocalScript', StandLabel)
-
-	script.Parent.Text = "Stand: "..game.Players.LocalPlayer.PlayerStats.Stand.Value
+local Hii = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local TopContainEverything = Instance.new("Frame")
+local Welcome = Instance.new("TextLabel")
+local USERNAME = Instance.new("TextLabel")
+local Title = Instance.new("TextLabel")
+local GamesList = Instance.new("TextLabel")
+local YourAvatar = Instance.new("ImageLabel")
+local MakeCircle = Instance.new("UICorner")
+local Line1 = Instance.new("Frame")
+local Line2 = Instance.new("Frame")
+local Line3 = Instance.new("Frame")
+local Line4 = Instance.new("Frame")
+local ListLay = Instance.new("Frame")
+local LayoutGames = Instance.new("UIListLayout")
+LayoutGames.Name = "LayoutGames"
+LayoutGames.Parent = ListLay
+LayoutGames.HorizontalAlignment = Enum.HorizontalAlignment.Center
+LayoutGames.SortOrder = Enum.SortOrder.LayoutOrder
+LayoutGames.Padding = UDim.new(0.00100000005, 1)
+ListLay.Name = "ListLay"
+ListLay.Parent = TopContainEverything
+ListLay.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+ListLay.BorderSizePixel = 0
+ListLay.Position = UDim2.new(0.654098332, 0, 2.11111116, 0)
+ListLay.Size = UDim2.new(0, 210, 0, 275)
+
+LayoutGames.Name = "LayoutGames"
+LayoutGames.Parent = ListLay
+LayoutGames.HorizontalAlignment = Enum.HorizontalAlignment.Center
+LayoutGames.SortOrder = Enum.SortOrder.LayoutOrder
+LayoutGames.Padding = UDim.new(0.00100000005, 1)
+local util = {}
+function util:makegame(Title,gamescript)
+	local gameExample = Instance.new("TextButton")
+	local gameBar = Instance.new("Frame")
+
+	gameExample.Name = "gameExample"
+	gameExample.Parent = ListLay
+	gameExample.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	gameExample.BackgroundTransparency = .5
+	gameExample.BorderSizePixel = 0
+	gameExample.Position = UDim2.new(0.0857142881, 0, -0.152727261, 0)
+	gameExample.Size = UDim2.new(0, 210, 0, 50)
+	gameExample.Font = Enum.Font.SourceSans
+	gameExample.Text = Title
+	gameExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+	gameExample.TextScaled = true
+	gameExample.TextSize = 14.000
+	gameExample.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+	gameExample.TextWrapped = true
+	gameExample.MouseButton1Click:Connect(function()
+		pcall(gamescript)
+	end)
+	gameBar.Name = "gameBar"
+	gameBar.Parent = gameExample
+	gameBar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	gameBar.BorderColor3 = Color3.fromRGB(27, 42, 53)
+	gameBar.BorderSizePixel = 0
+	gameBar.Position = UDim2.new(0.0571428575, 0, 1, 0)
+	gameBar.Size = UDim2.new(0, 185, 0, 2)
 end
-coroutine.wrap(WWZED_fake_script)()
-local function DRFYH_fake_script() -- ArrowSkinLabel.Unlucky 
-	local script = Instance.new('LocalScript', ArrowSkinLabel)
+function util:makeglobal(Text,call)
+	local GlobalButtons = Instance.new("ScrollingFrame")
+	local GlobalGrid = Instance.new("UIGridLayout")
+	local TextButton = Instance.new("TextButton")
+	GlobalButtons.Name = "GlobalButtons"
+	GlobalButtons.Parent = MainFrame
+	GlobalButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	GlobalButtons.BackgroundTransparency = 1.000
+	GlobalButtons.BorderSizePixel = 0
+	GlobalButtons.Position = UDim2.new(0.00327868853, 0, 0.369937629, 0)
+	GlobalButtons.Selectable = false
+	GlobalButtons.Size = UDim2.new(0, 399, 0, 232)
+	GlobalButtons.ScrollBarThickness = 1
 
-	script.Parent.Text = "Arrows Since Skin: "..game.Players.LocalPlayer.PlayerStats.PityCount.Value
-end
-coroutine.wrap(DRFYH_fake_script)()
-local function POKLVYG_fake_script() -- SkillPointsLabel.LocalScript 
-	local script = Instance.new('LocalScript', SkillPointsLabel)
-	script.Parent.Text = "Skill Points: "..game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Value
-    game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Changed:Connect(function()
-	script.Parent.Text = "Skill Points: "..game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Value
-    end)
-end
-coroutine.wrap(POKLVYG_fake_script)()
+	GlobalGrid.Name = "GlobalGrid"
+	GlobalGrid.Parent = GlobalButtons
+	GlobalGrid.SortOrder = Enum.SortOrder.LayoutOrder
+	GlobalGrid.CellPadding = UDim2.new(0, 0, 0, 1)
+	GlobalGrid.CellSize = UDim2.new(0, 99, 0, 50)
 
-
-
-
-
- local UserInputService = game:GetService("UserInputService")
-
-        local gui = topBar
-
-        local dragging
-        local dragInput
-        local dragStart
-        local startPos
-
-        local function update(input)
-        	local delta = input.Position - dragStart
-        	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-        end
-
-        gui.InputBegan:Connect(function(input)
-        	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        		dragging = true
-        		dragStart = input.Position
-        		startPos = gui.Position
-        		
-        		input.Changed:Connect(function()
-        			if input.UserInputState == Enum.UserInputState.End then
-        				dragging = false
-        			end
-        		end)
-        	end
-        end)
-
-        gui.InputChanged:Connect(function(input)
-        	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        		dragInput = input
-        	end
-        end)
-
-        UserInputService.InputChanged:Connect(function(input)
-        	if input == dragInput and dragging then
-        		update(input)
-        	end
-        end)
-
-local function UWRC_fake_script() -- DestroyUI.LocalScript 
-	local script = Instance.new('LocalScript', DestroyUI)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		Eight:Destroy()
-		Info:Destroy()
+	TextButton.Parent = GlobalButtons
+	TextButton.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+	TextButton.BorderSizePixel = 0
+	TextButton.Size = UDim2.new(0, 120, 0, 50)
+	TextButton.Font = Enum.Font.SourceSans
+	TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextButton.TextSize = 14.000
+	TextButton.Text = Text
+	TextButton.MouseButton1Click:Connect(function()
+		pcall(call)
 	end)
 end
-coroutine.wrap(UWRC_fake_script)()
-local function TJQEEA_fake_script() -- MinimizeUI.LocalScript 
-	local script = Instance.new('LocalScript', MinimizeUI)
 
-	local minimized = false
-	script.Parent.MouseButton1Click:Connect(function()
-		if minimized then
-			script.Parent.Parent.mainFrame:TweenSize(
-				UDim2.new(0,513,0,330),
-				Enum.EasingDirection.InOut,
-				Enum.EasingStyle.Sine,
-				.5,
-				true
-			)
-			minimized = false
-		else
-		script.Parent.Parent.mainFrame:TweenSize(
-				UDim2.new(0,513,0,00),
-				Enum.EasingDirection.InOut,
-				Enum.EasingStyle.Sine,
-				.5,
-				true
-			)
-		minimized = true	
-		end
-	end)
-end
-coroutine.wrap(TJQEEA_fake_script)()
-local function DAILNU_fake_script() -- SetWorth.WorthScript 
-	local script = Instance.new('LocalScript', SetWorth)
+Hii.Name = "Hii"
+Hii.Parent = game.CoreGui
+Hii.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-	function wo1()
-		loadstring(
-			game:HttpGet(
-				"https://gist.githubusercontent.com/crcket/449c0dabd660bd33bafbda65e1f625f5/raw/2589caa0ad7755d5ea97fc4d97c0d868246f2aa8/Worth1"
-			)
-		)()
-	end
-	function wo2()
-		loadstring(
-			game:HttpGet(
-				"https://gist.githubusercontent.com/crcket/2a6008ae15dc05a7b352a2d0bb9b4b97/raw/701b150dda4dab29a27c5e61f87c9cd6aae0148e/Worth2"
-			)
-		)()
-	end
-	function wo3()
-		loadstring(
-			game:HttpGet(
-				"https://gist.githubusercontent.com/crcket/09b7e5a94bc630cb8f82466587370f41/raw/3ad22d676bdd8c5b6bbc682a3cdd3b1326f8dd57/Worth3"
-			)
-		)()
-	end
-	function wo4()
-		loadstring(
-			game:HttpGet(
-				"https://gist.githubusercontent.com/crcket/8c1defb3f375b224d4f3bb80dc3d0dc1/raw/a3f9acd3c09e61e8d2e5fe7b3b4b59cd71a9290b/Worth4"
-			)
-		)()
-	end
-	function wo5()
-		loadstring(
-			game:HttpGet(
-				"https://gist.githubusercontent.com/crcket/5844d59ed97f258e01e8cc376140cc98/raw/17fd6ce90f6fb726a91a0798b78453c161f87515/Worth5"
-			)
-		)()
-	end
-	
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			
-			if script.Parent.Parent.WorthinessInput.Text == "1" then
-				wo1()
-				Notify:Create("Applied Worthiness [1]",5)
-			elseif script.Parent.Parent.WorthinessInputTxt.Text == "2" then
-				wo2()
-				Notify:Create("Applied Worthiness [2]",5)
-			elseif script.Parent.Parent.WorthinessInputTxt.Text == "3" then
-				wo3()
-				Notify:Create("Applied Worthiness [3]",5)
-			elseif script.Parent.Parent.WorthinessInputTxt.Text == "4" then
-				wo4()
-				Notify:Create("Applied Worthiness [4]",5)
-			elseif script.Parent.Parent.WorthinessInputTxt.Text == "5" then
-				wo5()
-				Notify:Create("Applied Worthiness [5]",5)
-			end
-		end
-	)
-end
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = Hii
+MainFrame.Active = true
+MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.144353941, 0, 0.144420132, 0)
+MainFrame.Size = UDim2.new(0, 610, 0, 370)
 
-local old
-old = hookmetamethod(game,"__namecall", function(self,...)
-    local args = {...}
-    local method = getnamecallmethod()
-    if tostring(self) == "Returner" and tostring(method) == "InvokeServer" then
-        return "  ___XP DE KEY"
-    end
-    return old(self, ...)
-end)
+TopContainEverything.Name = "TopContainEverything"
+TopContainEverything.Parent = MainFrame
+TopContainEverything.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+TopContainEverything.BorderSizePixel = 0
+TopContainEverything.Size = UDim2.new(0, 610, 0, 45)
+
+Welcome.Name = "Welcome"
+Welcome.Parent = TopContainEverything
+Welcome.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Welcome.BackgroundTransparency = 1.000
+Welcome.BorderSizePixel = 0
+Welcome.Position = UDim2.new(0.163606569, 0, 1.45000005, 0)
+Welcome.Size = UDim2.new(0, 120, 0, 30)
+Welcome.Font = Enum.Font.SourceSans
+Welcome.Text = "Welcome,"
+Welcome.TextColor3 = Color3.fromRGB(0, 180, 0)
+Welcome.TextScaled = true
+Welcome.TextSize = 14.000
+Welcome.TextWrapped = true
+
+USERNAME.Name = "USERNAME"
+USERNAME.Parent = TopContainEverything
+USERNAME.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+USERNAME.BackgroundTransparency = 1.000
+USERNAME.BorderSizePixel = 0
+USERNAME.Position = UDim2.new(0.164000005, 0, 2.11999989, 0)
+USERNAME.Size = UDim2.new(0, 120, 0, 30)
+USERNAME.Font = Enum.Font.SourceSans
+USERNAME.Text = game.Players.LocalPlayer.Name
+USERNAME.TextColor3 = Color3.fromRGB(255, 255, 255)
+USERNAME.TextScaled = true
+USERNAME.TextSize = 14.000
+USERNAME.TextWrapped = true
+
+Title.Name = "Title"
+Title.Parent = TopContainEverything
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(0, 205, 0, 45)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "Utilities"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+GamesList.Name = "GamesList"
+GamesList.Parent = TopContainEverything
+GamesList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GamesList.BackgroundTransparency = 1.000
+GamesList.BorderSizePixel = 0
+GamesList.Position = UDim2.new(0.655581594, 0, 1.03000009, 0)
+GamesList.Size = UDim2.new(0, 210, 0, 45)
+GamesList.Font = Enum.Font.SourceSans
+GamesList.Text = "Games"
+GamesList.TextColor3 = Color3.fromRGB(255, 255, 255)
+GamesList.TextScaled = true
+GamesList.TextSize = 14.000
+GamesList.TextWrapped = true
+
+YourAvatar.Name = "YourAvatar"
+YourAvatar.Parent = TopContainEverything
+YourAvatar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+YourAvatar.BorderSizePixel = 0
+YourAvatar.Position = UDim2.new(0.0250000004, 0, 1.09000003, 0)
+YourAvatar.Size = UDim2.new(0, 85, 0, 85)
+YourAvatar.Image = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.UserId.."&w=100&h=100"
+
+MakeCircle.CornerRadius = UDim.new(0, 100)
+MakeCircle.Name = "MakeCircle"
+MakeCircle.Parent = YourAvatar
 
 
-coroutine.wrap(DAILNU_fake_script)()
-local function ZKGVMSV_fake_script() -- UseArrow.ArrowScript 
-	local script = Instance.new('LocalScript', UseArrow)
+Line3.Name = "Line3"
+Line3.Parent = TopContainEverything
+Line3.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Line3.BorderSizePixel = 0
+Line3.Position = UDim2.new(0.654098332, 0, 1, 0)
+Line3.Size = UDim2.new(0, 2, 0, 325)
+Line3.ZIndex = 120
 
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			local roka = {
-				"Redeemed Mysterious Arrow",
-				"Mysterious Arrow"
-			};
-			for a, b in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-				if table.find(roka, b.Name) then
-					game.Players.LocalPlayer.Character.Humanoid:EquipTool(b);
-					game.Players.LocalPlayer.Character[b.Name]:Activate();
-				end;
-			end;
-			task.wait(0.5);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
-				v.Function();
-			end;
-			task.wait(0.5);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
-				v.Function();
-			end;
-			task.wait(0.5)
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
-				v.Function();
-			end;
-		end
-	)
-end
-coroutine.wrap(ZKGVMSV_fake_script)()
-local function QOEAGU_fake_script() -- UseRoka.RokaScript 
-	local script = Instance.new('LocalScript', UseRoka)
+Line2.Name = "Line2"
+Line2.Parent = TopContainEverything
+Line2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Line2.BorderSizePixel = 0
+Line2.Position = UDim2.new(-0, 0, 3, 0)
+Line2.Size = UDim2.new(0, 400, 0, 2)
 
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			
-			local roka = {
-				"Redeemed Rokakaka",
-				"Rokakaka"
-			};
-			for a, b in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-				if table.find(roka, b.Name) then
-					game.Players.LocalPlayer.Character.Humanoid:EquipTool(b);
-					game.Players.LocalPlayer.Character[b.Name]:Activate();
-				end;
-			end;
-			task.wait(0.5);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
-				v.Function();
-			end;
-			task.wait(0.5);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
-				v.Function();
-			end;
-			task.wait(0.5)
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
-				v.Function();
-			end;
-		end
-	)
-end
-coroutine.wrap(QOEAGU_fake_script)()
-local function URYQA_fake_script() -- UseRib.RibScript 
-	local script = Instance.new('LocalScript', UseRib)
+Line1.Name = "Line1"
+Line1.Parent = TopContainEverything
+Line1.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Line1.BorderSizePixel = 0
+Line1.Position = UDim2.new(0, 0, 1, 0)
+Line1.Size = UDim2.new(0, 610, 0, 2)
 
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			
-			function RibCage()
-				local lolez = {
-					[1] = "EndDialogue",
-					[2] = {
-						["NPC"] = "Rib Cage of The Saint's Corpse",
-						["Option"] = "Option1",
-						["Dialogue"] = "Dialogue2"
-					}
-				}
-				game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(lolez))
-			end
-			RibCage()
-			--
-		end
-	)
-end
-coroutine.wrap(URYQA_fake_script)()
-local function BRTFX_fake_script() -- PauseRage.PauseRageScript 
-	local script = Instance.new('LocalScript', PauseRage)
+Line4.Name = "Line4"
+Line4.Parent = TopContainEverything
+Line4.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Line4.BorderSizePixel = 0
+Line4.Position = UDim2.new(0.655737698, 0, 2.0666666, 0)
+Line4.Size = UDim2.new(0, 210, 0, 2)
 
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			
-			for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-				if v:IsA("Folder") then
-					wait()
-					if v.Name == "Rage Mode" or v.Name == "TimeStopping" then
-						v:Destroy()
-						game:GetService("CollectionService"):RemoveTag(game.Players.LocalPlayer.Character, "TimeStopping")
-					end
-				end
-			end
-			--
-		end
-	)
-end
-coroutine.wrap(BRTFX_fake_script)()
-local function YTBQV_fake_script() -- standsButton.HighlightStandsScript 
-	local script = Instance.new('LocalScript', standsButton)
-
-	
-	script.Parent.MouseButton1Click:Connect(function()
-		if script.Parent:FindFirstChildWhichIsA("Frame").Visible ~= true then
-		script.Parent.Parent.sbrButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent.Parent.racesButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent.Parent.MiscButton:FindFirstChildWhichIsA("Frame").Visible = false
-		script.Parent:FindFirstChildWhichIsA("Frame").Visible = true
-		end
-	
-	end)
-	
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundTransparency = 0.9
-	end)
-	
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundTransparency = 1
-	end)
-end
-coroutine.wrap(YTBQV_fake_script)()
-local function PTNETAQ_fake_script() -- RemoveVamp.RemoveVampScript 
-	local script = Instance.new('LocalScript', RemoveVamp)
-
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			
-			local args = {
-				[1] = "EndDialogue",
-				[2] = {
-					["NPC"] = "Jesus",
-					["Dialogue"] = "Vampire"
-				}
-			}
-	
-			game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-		end
-	)
-end
-coroutine.wrap(PTNETAQ_fake_script)()
-local function SGSQDG_fake_script() -- RemoveStyle.RemoveStyleScript 
-	local script = Instance.new('LocalScript', RemoveStyle)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		local args = {
-			[1] = "EndDialogue",
-			[2] = {
-				["NPC"] = "Matt",
-				["Option"] = "Option1",
-				["Dialogue"] = "Dialogue5"
-			}
-		}
-	
-		game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-	
-	end)
-end
-coroutine.wrap(SGSQDG_fake_script)()
-local function CMKE_fake_script() -- BuySpin.BuySpinScript 
-	local script = Instance.new('LocalScript', BuySpin)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		local args = {
-			[1] = "EndDialogue",
-			[2] = {
-				["NPC"] = "Guy Zeppelin",
-				["Option"] = "Option1",
-				["Dialogue"] = "Dialogue5"
-			}
-		}
-	
-		game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-	
-	end)
-end
-coroutine.wrap(CMKE_fake_script)()
-local function OKLJ_fake_script() -- BuyHamon.BuyHamonScript 
-	local script = Instance.new('LocalScript', BuyHamon)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Jonathan Joemama",["Option"] = "Option1",["Dialogue"] = "Dialogue2"}}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-	end)
-end
-coroutine.wrap(OKLJ_fake_script)()
-local function TGYPEV_fake_script() -- BuyBoxing.BuyBoxingScript 
-	local script = Instance.new('LocalScript', BuyBoxing)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Quinton",["Option"] = "Option1",["Dialogue"] = "Dialogue2"}}
-		game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-	end)
-end
-coroutine.wrap(TGYPEV_fake_script)()
-local function VAKR_fake_script() -- racesButton.HoverRace 
-	local script = Instance.new('LocalScript', racesButton)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		if script.Parent:FindFirstChildWhichIsA("Frame").Visible ~= true then
-			script.Parent.Parent.standsButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent.Parent.sbrButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent.Parent.MiscButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent:FindFirstChildWhichIsA("Frame").Visible = true
-		end
-	end)
-	
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundTransparency = 0.9
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundTransparency = 1
-	end)
-end
-coroutine.wrap(VAKR_fake_script)()
-local function HYVKWWA_fake_script() -- BringHorse.BringHorseScript 
-	local script = Instance.new('LocalScript', BringHorse)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		local me = game.Players.LocalPlayer
-		local name = game.Players.LocalPlayer.Name
-		local hname = "" .. name .. "'s Horse"
-		local myhorse = workspace[hname]
-		myhorse.HumanoidRootPart.CFrame = me.Character.Head.CFrame
-	end)
-end
-coroutine.wrap(HYVKWWA_fake_script)()
-local function FRGIYNI_fake_script() -- HighHorse.HighHorseScript 
-	local script = Instance.new('LocalScript', HighHorse)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		local me = game.Players.LocalPlayer
-		local name = game.Players.LocalPlayer.Name
-		local hname = "" .. name .. "'s Horse"
-		local myhorse = workspace[hname]
-		myhorse.Humanoid.HipHeight = 50
-	end)
-end
-coroutine.wrap(FRGIYNI_fake_script)()
-local function GITWSS_fake_script() -- FixHorseHeight.FixHorseScript 
-	local script = Instance.new('LocalScript', FixHorseHeight)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		local me = game.Players.LocalPlayer
-		local name = game.Players.LocalPlayer.Name
-		local hname = "" .. name .. "'s Horse"
-		local myhorse = workspace[hname]
-		myhorse.Humanoid.HipHeight = 4
-	end)
-end
-coroutine.wrap(GITWSS_fake_script)()
-local function WNCEJ_fake_script() -- SitDown.SitScript 
-	local script = Instance.new('LocalScript', SitDown)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		game.Players.LocalPlayer.Character.Humanoid.Sit = true
-	end)
-end
-coroutine.wrap(WNCEJ_fake_script)()
-local function NQMPO_fake_script() -- sbrButton.SbrHover 
-	local script = Instance.new('LocalScript', sbrButton)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		if script.Parent:FindFirstChildWhichIsA("Frame").Visible ~= true then
-			script.Parent.Parent.standsButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent.Parent.racesButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent.Parent.MiscButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent:FindFirstChildWhichIsA("Frame").Visible = true
-		end
-	end)
-	
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundTransparency = 0.9
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundTransparency = 1
-	end)
-end
-coroutine.wrap(NQMPO_fake_script)()
-local function ISYH_fake_script() -- SellAllHand.SellAllScript 
-	local script = Instance.new('LocalScript', SellAllHand)
-
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Merchant",["Option"] = "Option2",["Dialogue"] = "Dialogue5"}}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-		end
-	)
-end
-coroutine.wrap(ISYH_fake_script)()
-local function CZWV_fake_script() -- SellOneHand.SellOneScript 
-	local script = Instance.new('LocalScript', SellOneHand)
-
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Merchant",["Option"] = "Option1",["Dialogue"] = "Dialogue5"}}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-		end
-	)
-end
-coroutine.wrap(CZWV_fake_script)()
-local function MIFKYVG_fake_script() -- BuyRequiem.BuyRArrowScript 
-	local script = Instance.new('LocalScript', BuyRequiem)
-
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Isabelle the Arrowsmith",["Option"] = "Option1",["Dialogue"] = "Dialogue4" }}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-		end
-	)
-end
-coroutine.wrap(MIFKYVG_fake_script)()
-local function ESMWU_fake_script() -- Reset1v1.Reset1v1Script 
-	local script = Instance.new('LocalScript', Reset1v1)
-
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			local OLDHEAD = game.Players.LocalPlayer.Character.Head:Clone()
-			local HEAD = game.Players.LocalPlayer.Character.Head
-			OLDHEAD.Parent = game.CoreGui
-			HEAD:Destroy()
-			wait()
-			OLDHEAD.Parent = game.Players.LocalPlayer.Character
-		end
-	)
-end
-coroutine.wrap(ESMWU_fake_script)()
-local function LVHVSX_fake_script() -- JeezTp.JeezTpScript 
-	local script = Instance.new('LocalScript', JeezTp)
-
-	script.Parent.MouseButton1Click:Connect(
-		function()
-			if game:GetService("Workspace").Dialogues:FindFirstChild("Jesus") then
-   				 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Dialogues.Jesus.Head.CFrame
-				end
-
-		end
-	)
-end
-coroutine.wrap(LVHVSX_fake_script)()
-local function UNZJTOP_fake_script() -- MiscButton.HoverMisc 
-	local script = Instance.new('LocalScript', MiscButton)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		if script.Parent:FindFirstChildWhichIsA("Frame").Visible ~= true then
-			script.Parent.Parent.standsButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent.Parent.sbrButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent.Parent.racesButton:FindFirstChildWhichIsA("Frame").Visible = false
-			script.Parent:FindFirstChildWhichIsA("Frame").Visible = true
-		end
-	end)
-	
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundTransparency = 0.9
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundTransparency = 1
-	end)
-end
-coroutine.wrap(UNZJTOP_fake_script)()
-local function WGNWMQR_fake_script() -- YourUser.YourUserScript 
-	local script = Instance.new('LocalScript', YourUser)
-
-	script.Parent.Text = game.Players.LocalPlayer.Name
-end
-coroutine.wrap(WGNWMQR_fake_script)()
-local function HOITTEZ_fake_script() -- YourId.YourIdScript 
-	local script = Instance.new('LocalScript', YourId)
-
-	script.Parent.Text = game.Players.LocalPlayer.UserId
-end
-coroutine.wrap(HOITTEZ_fake_script)()
-
-
-task.wait(1.5)
-Notify:Create("Comes with TP bypass!",5)
+return util
