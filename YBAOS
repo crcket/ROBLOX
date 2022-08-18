@@ -554,23 +554,6 @@ YourId.TextScaled = true
 YourId.TextSize = 30.000
 YourId.TextWrapped = true
 
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local Info = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Frame_2 = Instance.new("Frame")
-local UIGradient = Instance.new("UIGradient")
-local StandLabel = Instance.new("TextLabel")
-local ArrowSkinLabel = Instance.new("TextLabel")
-local SkillPointsLabel = Instance.new("TextLabel")
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
 local Info = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Frame_2 = Instance.new("Frame")
