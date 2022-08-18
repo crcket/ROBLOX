@@ -1,211 +1,569 @@
-local Hii = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local TopContainEverything = Instance.new("Frame")
-local Welcome = Instance.new("TextLabel")
-local USERNAME = Instance.new("TextLabel")
-local Title = Instance.new("TextLabel")
-local GamesList = Instance.new("TextLabel")
-local YourAvatar = Instance.new("ImageLabel")
-local MakeCircle = Instance.new("UICorner")
-local Line1 = Instance.new("Frame")
-local Line2 = Instance.new("Frame")
-local Line3 = Instance.new("Frame")
-local Line4 = Instance.new("Frame")
-local ListLay = Instance.new("Frame")
-local LayoutGames = Instance.new("UIListLayout")
-LayoutGames.Name = "LayoutGames"
-LayoutGames.Parent = ListLay
-LayoutGames.HorizontalAlignment = Enum.HorizontalAlignment.Center
-LayoutGames.SortOrder = Enum.SortOrder.LayoutOrder
-LayoutGames.Padding = UDim.new(0.00100000005, 1)
-ListLay.Name = "ListLay"
-ListLay.Parent = TopContainEverything
-ListLay.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-ListLay.BorderSizePixel = 0
-ListLay.Position = UDim2.new(0.654098332, 0, 2.11111116, 0)
-ListLay.Size = UDim2.new(0, 210, 0, 275)
+--Properties:
 
-LayoutGames.Name = "LayoutGames"
-LayoutGames.Parent = ListLay
-LayoutGames.HorizontalAlignment = Enum.HorizontalAlignment.Center
-LayoutGames.SortOrder = Enum.SortOrder.LayoutOrder
-LayoutGames.Padding = UDim.new(0.00100000005, 1)
-local util = {}
-function util:makegame(Title,gamescript)
-	local gameExample = Instance.new("TextButton")
-	local gameBar = Instance.new("Frame")
+Info.Name = "Info"
+Info.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Info.Parent = game.CoreGui
+Info.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-	gameExample.Name = "gameExample"
-	gameExample.Parent = ListLay
-	gameExample.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	gameExample.BackgroundTransparency = .5
-	gameExample.BorderSizePixel = 0
-	gameExample.Position = UDim2.new(0.0857142881, 0, -0.152727261, 0)
-	gameExample.Size = UDim2.new(0, 210, 0, 50)
-	gameExample.Font = Enum.Font.SourceSans
-	gameExample.Text = Title
-	gameExample.TextColor3 = Color3.fromRGB(255, 255, 255)
-	gameExample.TextScaled = true
-	gameExample.TextSize = 14.000
-	gameExample.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-	gameExample.TextWrapped = true
-	gameExample.MouseButton1Click:Connect(function()
-		pcall(gamescript)
-	end)
-	gameBar.Name = "gameBar"
-	gameBar.Parent = gameExample
-	gameBar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-	gameBar.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	gameBar.BorderSizePixel = 0
-	gameBar.Position = UDim2.new(0.0571428575, 0, 1, 0)
-	gameBar.Size = UDim2.new(0, 185, 0, 2)
+Frame.Parent = Info
+Frame.BackgroundColor3 = Color3.fromRGB(51, 56, 103)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(1, -150, 0.5, -55)
+Frame.Size = UDim2.new(0, 150, 0, 110)
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(1.33299994, -200, 0.550000012, -75)
+Frame_2.Size = UDim2.new(0, 150, 0, 15)
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(17, 21, 51)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(43, 49, 97))}
+UIGradient.Parent = Frame_2
+StandLabel.Name = "StandLabel"
+StandLabel.Parent = Frame_2
+StandLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+StandLabel.BackgroundTransparency = 1.000
+StandLabel.BorderSizePixel = 0
+StandLabel.Position = UDim2.new(0, 0, 0.933333337, 0)
+StandLabel.Size = UDim2.new(0, 150, 0, 36)
+StandLabel.Font = Enum.Font.SourceSans
+StandLabel.Text = "Stand:"
+StandLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+StandLabel.TextScaled = true
+StandLabel.TextSize = 14.000
+StandLabel.TextStrokeTransparency = 0.000
+StandLabel.TextWrapped = true
+ArrowSkinLabel.Name = "ArrowSkinLabel"
+ArrowSkinLabel.Parent = Frame_2
+ArrowSkinLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ArrowSkinLabel.BackgroundTransparency = 1.000
+ArrowSkinLabel.BorderSizePixel = 0
+ArrowSkinLabel.Position = UDim2.new(0, 0, 3.33333349, 0)
+ArrowSkinLabel.Size = UDim2.new(0, 150, 0, 36)
+ArrowSkinLabel.Font = Enum.Font.SourceSans
+ArrowSkinLabel.Text = "Arrows Since Skin: "
+ArrowSkinLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+ArrowSkinLabel.TextScaled = true
+ArrowSkinLabel.TextSize = 14.000
+ArrowSkinLabel.TextStrokeTransparency = 0.000
+ArrowSkinLabel.TextWrapped = true
+SkillPointsLabel.Name = "SkillPointsLabel"
+SkillPointsLabel.Parent = Frame_2
+SkillPointsLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SkillPointsLabel.BackgroundTransparency = 1.000
+SkillPointsLabel.BorderSizePixel = 0
+SkillPointsLabel.Position = UDim2.new(0, 0, 5.73333359, 0)
+SkillPointsLabel.Size = UDim2.new(0, 150, 0, 36)
+SkillPointsLabel.Font = Enum.Font.SourceSans
+SkillPointsLabel.Text = "Skill Points: "
+SkillPointsLabel.TextColor3 = Color3.fromRGB(0, 0, 255)
+SkillPointsLabel.TextScaled = true
+SkillPointsLabel.TextSize = 14.000
+SkillPointsLabel.TextStrokeTransparency = 0.000
+SkillPointsLabel.TextWrapped = true
+-- Scripts:
+local function WWZED_fake_script() -- StandLabel.YourStandLbl 
+	local script = Instance.new('LocalScript', StandLabel)
+	script.Parent.Text = "Stand: "..game.Players.LocalPlayer.PlayerStats.Stand.Value
 end
-function util:makeglobal(Text,call)
-	local GlobalButtons = Instance.new("ScrollingFrame")
-	local GlobalGrid = Instance.new("UIGridLayout")
-	local TextButton = Instance.new("TextButton")
-	GlobalButtons.Name = "GlobalButtons"
-	GlobalButtons.Parent = MainFrame
-	GlobalButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	GlobalButtons.BackgroundTransparency = 1.000
-	GlobalButtons.BorderSizePixel = 0
-	GlobalButtons.Position = UDim2.new(0.00327868853, 0, 0.369937629, 0)
-	GlobalButtons.Selectable = false
-	GlobalButtons.Size = UDim2.new(0, 399, 0, 232)
-	GlobalButtons.ScrollBarThickness = 1
-
-	GlobalGrid.Name = "GlobalGrid"
-	GlobalGrid.Parent = GlobalButtons
-	GlobalGrid.SortOrder = Enum.SortOrder.LayoutOrder
-	GlobalGrid.CellPadding = UDim2.new(0, 0, 0, 1)
-	GlobalGrid.CellSize = UDim2.new(0, 99, 0, 50)
-
-	TextButton.Parent = GlobalButtons
-	TextButton.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-	TextButton.BorderSizePixel = 0
-	TextButton.Size = UDim2.new(0, 120, 0, 50)
-	TextButton.Font = Enum.Font.SourceSans
-	TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	TextButton.TextSize = 14.000
-	TextButton.Text = Text
-	TextButton.MouseButton1Click:Connect(function()
-		pcall(call)
+coroutine.wrap(WWZED_fake_script)()
+local function DRFYH_fake_script() -- ArrowSkinLabel.Unlucky 
+	local script = Instance.new('LocalScript', ArrowSkinLabel)
+	script.Parent.Text = "Arrows Since Skin: "..game.Players.LocalPlayer.PlayerStats.PityCount.Value
+end
+coroutine.wrap(DRFYH_fake_script)()
+local function POKLVYG_fake_script() -- SkillPointsLabel.LocalScript 
+	local script = Instance.new('LocalScript', SkillPointsLabel)
+	script.Parent.Text = "Skill Points: "..game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Value
+    game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Changed:Connect(function()
+	script.Parent.Text = "Skill Points: "..game:GetService("Players").LocalPlayer.PlayerStats.SkillPoints.Value
+    end)
+end
+coroutine.wrap(POKLVYG_fake_script)()
+ local UserInputService = game:GetService("UserInputService")
+        local gui = topBar
+        local dragging
+        local dragInput
+        local dragStart
+        local startPos
+        local function update(input)
+        	local delta = input.Position - dragStart
+        	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+        gui.InputBegan:Connect(function(input)
+        	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        		dragging = true
+        		dragStart = input.Position
+        		startPos = gui.Position
+        		
+        		input.Changed:Connect(function()
+        			if input.UserInputState == Enum.UserInputState.End then
+        				dragging = false
+        			end
+        		end)
+        	end
+        end)
+        gui.InputChanged:Connect(function(input)
+        	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        		dragInput = input
+        	end
+        end)
+        UserInputService.InputChanged:Connect(function(input)
+        	if input == dragInput and dragging then
+        		update(input)
+        	end
+        end)
+local function UWRC_fake_script() -- DestroyUI.LocalScript 
+	local script = Instance.new('LocalScript', DestroyUI)
+	script.Parent.MouseButton1Click:Connect(function()
+		Eight:Destroy()
+		Info:Destroy()
 	end)
 end
-
-Hii.Name = "Hii"
-Hii.Parent = game.CoreGui
-Hii.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = Hii
-MainFrame.Active = true
-MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-MainFrame.BorderSizePixel = 0
-MainFrame.Position = UDim2.new(0.144353941, 0, 0.144420132, 0)
-MainFrame.Size = UDim2.new(0, 610, 0, 370)
-
-TopContainEverything.Name = "TopContainEverything"
-TopContainEverything.Parent = MainFrame
-TopContainEverything.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-TopContainEverything.BorderSizePixel = 0
-TopContainEverything.Size = UDim2.new(0, 610, 0, 45)
-
-Welcome.Name = "Welcome"
-Welcome.Parent = TopContainEverything
-Welcome.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Welcome.BackgroundTransparency = 1.000
-Welcome.BorderSizePixel = 0
-Welcome.Position = UDim2.new(0.163606569, 0, 1.45000005, 0)
-Welcome.Size = UDim2.new(0, 120, 0, 30)
-Welcome.Font = Enum.Font.SourceSans
-Welcome.Text = "Welcome,"
-Welcome.TextColor3 = Color3.fromRGB(0, 180, 0)
-Welcome.TextScaled = true
-Welcome.TextSize = 14.000
-Welcome.TextWrapped = true
-
-USERNAME.Name = "USERNAME"
-USERNAME.Parent = TopContainEverything
-USERNAME.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-USERNAME.BackgroundTransparency = 1.000
-USERNAME.BorderSizePixel = 0
-USERNAME.Position = UDim2.new(0.164000005, 0, 2.11999989, 0)
-USERNAME.Size = UDim2.new(0, 120, 0, 30)
-USERNAME.Font = Enum.Font.SourceSans
-USERNAME.Text = game.Players.LocalPlayer.Name
-USERNAME.TextColor3 = Color3.fromRGB(255, 255, 255)
-USERNAME.TextScaled = true
-USERNAME.TextSize = 14.000
-USERNAME.TextWrapped = true
-
-Title.Name = "Title"
-Title.Parent = TopContainEverything
-Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Title.BackgroundTransparency = 1.000
-Title.BorderSizePixel = 0
-Title.Size = UDim2.new(0, 205, 0, 45)
-Title.Font = Enum.Font.SourceSans
-Title.Text = "Utilities"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextScaled = true
-Title.TextSize = 14.000
-Title.TextWrapped = true
-
-GamesList.Name = "GamesList"
-GamesList.Parent = TopContainEverything
-GamesList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-GamesList.BackgroundTransparency = 1.000
-GamesList.BorderSizePixel = 0
-GamesList.Position = UDim2.new(0.655581594, 0, 1.03000009, 0)
-GamesList.Size = UDim2.new(0, 210, 0, 45)
-GamesList.Font = Enum.Font.SourceSans
-GamesList.Text = "Games"
-GamesList.TextColor3 = Color3.fromRGB(255, 255, 255)
-GamesList.TextScaled = true
-GamesList.TextSize = 14.000
-GamesList.TextWrapped = true
-
-YourAvatar.Name = "YourAvatar"
-YourAvatar.Parent = TopContainEverything
-YourAvatar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-YourAvatar.BorderSizePixel = 0
-YourAvatar.Position = UDim2.new(0.0250000004, 0, 1.09000003, 0)
-YourAvatar.Size = UDim2.new(0, 85, 0, 85)
-YourAvatar.Image = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.UserId.."&w=100&h=100"
-
-MakeCircle.CornerRadius = UDim.new(0, 100)
-MakeCircle.Name = "MakeCircle"
-MakeCircle.Parent = YourAvatar
-
-
-Line3.Name = "Line3"
-Line3.Parent = TopContainEverything
-Line3.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Line3.BorderSizePixel = 0
-Line3.Position = UDim2.new(0.654098332, 0, 1, 0)
-Line3.Size = UDim2.new(0, 2, 0, 325)
-Line3.ZIndex = 120
-
-Line2.Name = "Line2"
-Line2.Parent = TopContainEverything
-Line2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Line2.BorderSizePixel = 0
-Line2.Position = UDim2.new(-0, 0, 3, 0)
-Line2.Size = UDim2.new(0, 400, 0, 2)
-
-Line1.Name = "Line1"
-Line1.Parent = TopContainEverything
-Line1.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Line1.BorderSizePixel = 0
-Line1.Position = UDim2.new(0, 0, 1, 0)
-Line1.Size = UDim2.new(0, 610, 0, 2)
-
-Line4.Name = "Line4"
-Line4.Parent = TopContainEverything
-Line4.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Line4.BorderSizePixel = 0
-Line4.Position = UDim2.new(0.655737698, 0, 2.0666666, 0)
-Line4.Size = UDim2.new(0, 210, 0, 2)
-
-return util
+coroutine.wrap(UWRC_fake_script)()
+local function TJQEEA_fake_script() -- MinimizeUI.LocalScript 
+	local script = Instance.new('LocalScript', MinimizeUI)
+	local minimized = false
+	script.Parent.MouseButton1Click:Connect(function()
+		if minimized then
+			script.Parent.Parent.mainFrame:TweenSize(
+				UDim2.new(0,513,0,330),
+				Enum.EasingDirection.InOut,
+				Enum.EasingStyle.Sine,
+				.5,
+				true
+			)
+			minimized = false
+		else
+		script.Parent.Parent.mainFrame:TweenSize(
+				UDim2.new(0,513,0,00),
+				Enum.EasingDirection.InOut,
+				Enum.EasingStyle.Sine,
+				.5,
+				true
+			)
+		minimized = true	
+		end
+	end)
+end
+coroutine.wrap(TJQEEA_fake_script)()
+local function DAILNU_fake_script() -- SetWorth.WorthScript 
+	local script = Instance.new('LocalScript', SetWorth)
+	function wo1()
+		loadstring(
+			game:HttpGet(
+				"https://gist.githubusercontent.com/crcket/449c0dabd660bd33bafbda65e1f625f5/raw/2589caa0ad7755d5ea97fc4d97c0d868246f2aa8/Worth1"
+			)
+		)()
+	end
+	function wo2()
+		loadstring(
+			game:HttpGet(
+				"https://gist.githubusercontent.com/crcket/2a6008ae15dc05a7b352a2d0bb9b4b97/raw/701b150dda4dab29a27c5e61f87c9cd6aae0148e/Worth2"
+			)
+		)()
+	end
+	function wo3()
+		loadstring(
+			game:HttpGet(
+				"https://gist.githubusercontent.com/crcket/09b7e5a94bc630cb8f82466587370f41/raw/3ad22d676bdd8c5b6bbc682a3cdd3b1326f8dd57/Worth3"
+			)
+		)()
+	end
+	function wo4()
+		loadstring(
+			game:HttpGet(
+				"https://gist.githubusercontent.com/crcket/8c1defb3f375b224d4f3bb80dc3d0dc1/raw/a3f9acd3c09e61e8d2e5fe7b3b4b59cd71a9290b/Worth4"
+			)
+		)()
+	end
+	function wo5()
+		loadstring(
+			game:HttpGet(
+				"https://gist.githubusercontent.com/crcket/5844d59ed97f258e01e8cc376140cc98/raw/17fd6ce90f6fb726a91a0798b78453c161f87515/Worth5"
+			)
+		)()
+	end
+	
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			
+			if script.Parent.Parent.WorthinessInput.Text == "1" then
+				wo1()
+				Notify:Create("Applied Worthiness [1]",5)
+			elseif script.Parent.Parent.WorthinessInputTxt.Text == "2" then
+				wo2()
+				Notify:Create("Applied Worthiness [2]",5)
+			elseif script.Parent.Parent.WorthinessInputTxt.Text == "3" then
+				wo3()
+				Notify:Create("Applied Worthiness [3]",5)
+			elseif script.Parent.Parent.WorthinessInputTxt.Text == "4" then
+				wo4()
+				Notify:Create("Applied Worthiness [4]",5)
+			elseif script.Parent.Parent.WorthinessInputTxt.Text == "5" then
+				wo5()
+				Notify:Create("Applied Worthiness [5]",5)
+			end
+		end
+	)
+end
+local old
+old = hookmetamethod(game,"__namecall", function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if tostring(self) == "Returner" and tostring(method) == "InvokeServer" then
+        return "  ___XP DE KEY"
+    end
+    return old(self, ...)
+end)
+coroutine.wrap(DAILNU_fake_script)()
+local function ZKGVMSV_fake_script() -- UseArrow.ArrowScript 
+	local script = Instance.new('LocalScript', UseArrow)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			local roka = {
+				"Redeemed Mysterious Arrow",
+				"Mysterious Arrow"
+			};
+			for a, b in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+				if table.find(roka, b.Name) then
+					game.Players.LocalPlayer.Character.Humanoid:EquipTool(b);
+					game.Players.LocalPlayer.Character[b.Name]:Activate();
+				end;
+			end;
+			task.wait(0.5);
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
+				v.Function();
+			end;
+			task.wait(0.5);
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
+				v.Function();
+			end;
+			task.wait(0.5)
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
+				v.Function();
+			end;
+		end
+	)
+end
+coroutine.wrap(ZKGVMSV_fake_script)()
+local function QOEAGU_fake_script() -- UseRoka.RokaScript 
+	local script = Instance.new('LocalScript', UseRoka)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			
+			local roka = {
+				"Redeemed Rokakaka",
+				"Rokakaka"
+			};
+			for a, b in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+				if table.find(roka, b.Name) then
+					game.Players.LocalPlayer.Character.Humanoid:EquipTool(b);
+					game.Players.LocalPlayer.Character[b.Name]:Activate();
+				end;
+			end;
+			task.wait(0.5);
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
+				v.Function();
+			end;
+			task.wait(0.5);
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
+				v.Function();
+			end;
+			task.wait(0.5)
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
+				v.Function();
+			end;
+		end
+	)
+end
+coroutine.wrap(QOEAGU_fake_script)()
+local function URYQA_fake_script() -- UseRib.RibScript 
+	local script = Instance.new('LocalScript', UseRib)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			
+			function RibCage()
+				local lolez = {
+					[1] = "EndDialogue",
+					[2] = {
+						["NPC"] = "Rib Cage of The Saint's Corpse",
+						["Option"] = "Option1",
+						["Dialogue"] = "Dialogue2"
+					}
+				}
+				game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(lolez))
+			end
+			RibCage()
+			--
+		end
+	)
+end
+coroutine.wrap(URYQA_fake_script)()
+local function BRTFX_fake_script() -- PauseRage.PauseRageScript 
+	local script = Instance.new('LocalScript', PauseRage)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			
+			for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+				if v:IsA("Folder") then
+					wait()
+					if v.Name == "Rage Mode" or v.Name == "TimeStopping" then
+						v:Destroy()
+						game:GetService("CollectionService"):RemoveTag(game.Players.LocalPlayer.Character, "TimeStopping")
+					end
+				end
+			end
+			--
+		end
+	)
+end
+coroutine.wrap(BRTFX_fake_script)()
+local function YTBQV_fake_script() -- standsButton.HighlightStandsScript 
+	local script = Instance.new('LocalScript', standsButton)
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent:FindFirstChildWhichIsA("Frame").Visible ~= true then
+		script.Parent.Parent.sbrButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent.Parent.racesButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent.Parent.MiscButton:FindFirstChildWhichIsA("Frame").Visible = false
+		script.Parent:FindFirstChildWhichIsA("Frame").Visible = true
+		end
+	
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundTransparency = 0.9
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundTransparency = 1
+	end)
+end
+coroutine.wrap(YTBQV_fake_script)()
+local function PTNETAQ_fake_script() -- RemoveVamp.RemoveVampScript 
+	local script = Instance.new('LocalScript', RemoveVamp)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			
+			local args = {
+				[1] = "EndDialogue",
+				[2] = {
+					["NPC"] = "Jesus",
+					["Dialogue"] = "Vampire"
+				}
+			}
+	
+			game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+		end
+	)
+end
+coroutine.wrap(PTNETAQ_fake_script)()
+local function SGSQDG_fake_script() -- RemoveStyle.RemoveStyleScript 
+	local script = Instance.new('LocalScript', RemoveStyle)
+	script.Parent.MouseButton1Click:Connect(function()
+		local args = {
+			[1] = "EndDialogue",
+			[2] = {
+				["NPC"] = "Matt",
+				["Option"] = "Option1",
+				["Dialogue"] = "Dialogue5"
+			}
+		}
+	
+		game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+	
+	end)
+end
+coroutine.wrap(SGSQDG_fake_script)()
+local function CMKE_fake_script() -- BuySpin.BuySpinScript 
+	local script = Instance.new('LocalScript', BuySpin)
+	script.Parent.MouseButton1Click:Connect(function()
+		local args = {
+			[1] = "EndDialogue",
+			[2] = {
+				["NPC"] = "Guy Zeppelin",
+				["Option"] = "Option1",
+				["Dialogue"] = "Dialogue5"
+			}
+		}
+	
+		game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+	
+	end)
+end
+coroutine.wrap(CMKE_fake_script)()
+local function OKLJ_fake_script() -- BuyHamon.BuyHamonScript 
+	local script = Instance.new('LocalScript', BuyHamon)
+	script.Parent.MouseButton1Click:Connect(function()
+		local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Jonathan Joemama",["Option"] = "Option1",["Dialogue"] = "Dialogue2"}}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+	end)
+end
+coroutine.wrap(OKLJ_fake_script)()
+local function TGYPEV_fake_script() -- BuyBoxing.BuyBoxingScript 
+	local script = Instance.new('LocalScript', BuyBoxing)
+	script.Parent.MouseButton1Click:Connect(function()
+		local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Quinton",["Option"] = "Option1",["Dialogue"] = "Dialogue2"}}
+		game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+	end)
+end
+coroutine.wrap(TGYPEV_fake_script)()
+local function VAKR_fake_script() -- racesButton.HoverRace 
+	local script = Instance.new('LocalScript', racesButton)
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent:FindFirstChildWhichIsA("Frame").Visible ~= true then
+			script.Parent.Parent.standsButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent.Parent.sbrButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent.Parent.MiscButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent:FindFirstChildWhichIsA("Frame").Visible = true
+		end
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundTransparency = 0.9
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundTransparency = 1
+	end)
+end
+coroutine.wrap(VAKR_fake_script)()
+local function HYVKWWA_fake_script() -- BringHorse.BringHorseScript 
+	local script = Instance.new('LocalScript', BringHorse)
+	script.Parent.MouseButton1Click:Connect(function()
+		local me = game.Players.LocalPlayer
+		local name = game.Players.LocalPlayer.Name
+		local hname = "" .. name .. "'s Horse"
+		local myhorse = workspace[hname]
+		myhorse.HumanoidRootPart.CFrame = me.Character.Head.CFrame
+	end)
+end
+coroutine.wrap(HYVKWWA_fake_script)()
+local function FRGIYNI_fake_script() -- HighHorse.HighHorseScript 
+	local script = Instance.new('LocalScript', HighHorse)
+	script.Parent.MouseButton1Click:Connect(function()
+		local me = game.Players.LocalPlayer
+		local name = game.Players.LocalPlayer.Name
+		local hname = "" .. name .. "'s Horse"
+		local myhorse = workspace[hname]
+		myhorse.Humanoid.HipHeight = 50
+	end)
+end
+coroutine.wrap(FRGIYNI_fake_script)()
+local function GITWSS_fake_script() -- FixHorseHeight.FixHorseScript 
+	local script = Instance.new('LocalScript', FixHorseHeight)
+	script.Parent.MouseButton1Click:Connect(function()
+		local me = game.Players.LocalPlayer
+		local name = game.Players.LocalPlayer.Name
+		local hname = "" .. name .. "'s Horse"
+		local myhorse = workspace[hname]
+		myhorse.Humanoid.HipHeight = 4
+	end)
+end
+coroutine.wrap(GITWSS_fake_script)()
+local function WNCEJ_fake_script() -- SitDown.SitScript 
+	local script = Instance.new('LocalScript', SitDown)
+	script.Parent.MouseButton1Click:Connect(function()
+		game.Players.LocalPlayer.Character.Humanoid.Sit = true
+	end)
+end
+coroutine.wrap(WNCEJ_fake_script)()
+local function NQMPO_fake_script() -- sbrButton.SbrHover 
+	local script = Instance.new('LocalScript', sbrButton)
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent:FindFirstChildWhichIsA("Frame").Visible ~= true then
+			script.Parent.Parent.standsButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent.Parent.racesButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent.Parent.MiscButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent:FindFirstChildWhichIsA("Frame").Visible = true
+		end
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundTransparency = 0.9
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundTransparency = 1
+	end)
+end
+coroutine.wrap(NQMPO_fake_script)()
+local function ISYH_fake_script() -- SellAllHand.SellAllScript 
+	local script = Instance.new('LocalScript', SellAllHand)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Merchant",["Option"] = "Option2",["Dialogue"] = "Dialogue5"}}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+		end
+	)
+end
+coroutine.wrap(ISYH_fake_script)()
+local function CZWV_fake_script() -- SellOneHand.SellOneScript 
+	local script = Instance.new('LocalScript', SellOneHand)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Merchant",["Option"] = "Option1",["Dialogue"] = "Dialogue5"}}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+		end
+	)
+end
+coroutine.wrap(CZWV_fake_script)()
+local function MIFKYVG_fake_script() -- BuyRequiem.BuyRArrowScript 
+	local script = Instance.new('LocalScript', BuyRequiem)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			local args = {[1] = "EndDialogue",[2] = {["NPC"] = "Isabelle the Arrowsmith",["Option"] = "Option1",["Dialogue"] = "Dialogue4" }}game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+		end
+	)
+end
+coroutine.wrap(MIFKYVG_fake_script)()
+local function ESMWU_fake_script() -- Reset1v1.Reset1v1Script 
+	local script = Instance.new('LocalScript', Reset1v1)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			local OLDHEAD = game.Players.LocalPlayer.Character.Head:Clone()
+			local HEAD = game.Players.LocalPlayer.Character.Head
+			OLDHEAD.Parent = game.CoreGui
+			HEAD:Destroy()
+			wait()
+			OLDHEAD.Parent = game.Players.LocalPlayer.Character
+		end
+	)
+end
+coroutine.wrap(ESMWU_fake_script)()
+local function LVHVSX_fake_script() -- JeezTp.JeezTpScript 
+	local script = Instance.new('LocalScript', JeezTp)
+	script.Parent.MouseButton1Click:Connect(
+		function()
+			if game:GetService("Workspace").Dialogues:FindFirstChild("Jesus") then
+   				 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Dialogues.Jesus.Head.CFrame
+				end
+		end
+	)
+end
+coroutine.wrap(LVHVSX_fake_script)()
+local function UNZJTOP_fake_script() -- MiscButton.HoverMisc 
+	local script = Instance.new('LocalScript', MiscButton)
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent:FindFirstChildWhichIsA("Frame").Visible ~= true then
+			script.Parent.Parent.standsButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent.Parent.sbrButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent.Parent.racesButton:FindFirstChildWhichIsA("Frame").Visible = false
+			script.Parent:FindFirstChildWhichIsA("Frame").Visible = true
+		end
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundTransparency = 0.9
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundTransparency = 1
+	end)
+end
+coroutine.wrap(UNZJTOP_fake_script)()
+local function WGNWMQR_fake_script() -- YourUser.YourUserScript 
+	local script = Instance.new('LocalScript', YourUser)
+	script.Parent.Text = game.Players.LocalPlayer.Name
+end
+coroutine.wrap(WGNWMQR_fake_script)()
+local function HOITTEZ_fake_script() -- YourId.YourIdScript 
+	local script = Instance.new('LocalScript', YourId)
+	script.Parent.Text = game.Players.LocalPlayer.UserId
+end
+coroutine.wrap(HOITTEZ_fake_script)()
+task.wait(1.5)
+Notify:Create("Comes with TP bypass!",5)
