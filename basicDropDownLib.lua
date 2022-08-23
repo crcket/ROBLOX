@@ -271,4 +271,8 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 	
 end
 coroutine.wrap(QLPEVC_fake_script)()
+DaTopBar.MouseEnter:Connect(function()
+	local userInputService = game:GetService("UserInputService")
+	userInputService.MouseIconEnabled = true
+end)
 return lib
