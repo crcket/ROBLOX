@@ -56,13 +56,18 @@ TITLE.BorderSizePixel = 0
 TITLE.Position = UDim2.new(0, 0, 2.54313164e-07, 0)
 TITLE.Size = UDim2.new(0, 70, 0, 30)
 TITLE.Font = Enum.Font.SourceSans
-TITLE.Text = "Hello!"
+TITLE.Text = " "
 TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.TextScaled = true
 TITLE.TextSize = 14.000
 TITLE.TextWrapped = true
 
 local lib = {}
+function lib:BasicSettings(T,R,G,B)
+    TITLE.Text = T
+    DaTopbar.BackgroundColor3 = Color3.fromRGB(R,G,B)
+end
+
 function lib:MakeButton(text,call)
 	local Butin = Instance.new("TextButton")
 	local cornr = Instance.new("UICorner")
@@ -271,4 +276,8 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 	
 end
 coroutine.wrap(QLPEVC_fake_script)()
+DaTopbar.MouseEnter:Connect(function()
+	local userInputService = game:GetService("UserInputService")
+	userInputService.MouseIconEnabled = true
+end)
 return lib
