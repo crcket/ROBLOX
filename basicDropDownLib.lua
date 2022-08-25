@@ -2,13 +2,14 @@
 -- Version: 3.2
 
 -- Instances:
-
+local cansee= true
 local ScreenGui = Instance.new("ScreenGui")
 local DaTopbar = Instance.new("Frame")
 local SoScrollWorks = Instance.new("Frame")
 local nyoooooom = Instance.new("ScrollingFrame")
 local Freak = Instance.new("UIListLayout")
 local TITLE = Instance.new("TextLabel")
+local goupdown = Instance.new("ImageButton")
 
 --Properties:
 
@@ -30,6 +31,7 @@ SoScrollWorks.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 SoScrollWorks.BorderSizePixel = 0
 SoScrollWorks.Position = UDim2.new(0, 0, 1, 0)
 SoScrollWorks.Size = UDim2.new(0, 210, 0, 253)
+SoScrollWorks.ClipsDescendants = true
 
 nyoooooom.Name = "nyoooooom"
 nyoooooom.Parent = SoScrollWorks
@@ -61,6 +63,17 @@ TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.TextScaled = true
 TITLE.TextSize = 14.000
 TITLE.TextWrapped = true
+
+goupdown.Name = "goupdown"
+goupdown.Parent = DaTopbar
+goupdown.Active = false
+goupdown.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+goupdown.BackgroundTransparency = 1.000
+goupdown.Position = UDim2.new(0.850000024, 0, 0.333332986, 0)
+goupdown.Selectable = false
+goupdown.Size = UDim2.new(0, 14, 0, 9)
+goupdown.Image = "rbxassetid://10711007885"
+goupdown.ScaleType = Enum.ScaleType.Fit
 
 local lib = {}
 function lib:BasicSettings(T,R,G,B)
@@ -233,7 +246,7 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 	
 end
 coroutine.wrap(QLPEVC_fake_script)()
-local DaTopbar = script.Parent
+
 DaTopbar.MouseEnter:Connect(function()
 	local userInputService = game:GetService("UserInputService")
 	userInputService.MouseIconEnabled = true
@@ -243,5 +256,23 @@ DaTopbar.MouseLeave:Connect(function()
 	local userInputService = game:GetService("UserInputService")
 	userInputService.MouseIconEnabled = true
 	game.Players.LocalPlayer:GetMouse().Icon = ""
+end)
+
+local ts = game:GetService("TweenService")
+local objec = goupdown
+local infomat = TweenInfo.new(.5,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut)
+local TWE = ts:Create(objec,infomat,{Rotation = 180})
+local NOTON = ts:Create(objec,infomat,{Rotation = 0})
+goupdown.MouseButton1Down:Connect(function()
+	if cansee == true then
+		TWE:Play()
+		SoScrollWorks:TweenSize(UDim2.new(0,210,0,0),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,.7,true)
+		cansee = false
+	elseif cansee == false then
+		print("poopy")
+		NOTON:Play()
+		SoScrollWorks:TweenSize(UDim2.new(0,210,0,253),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,.7,true)
+		cansee = true
+	end
 end)
 return lib
