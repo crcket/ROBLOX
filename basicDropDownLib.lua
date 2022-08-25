@@ -204,7 +204,7 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 	local UIS = game:GetService("UserInputService")
 	local todrag = script.Parent
 	local dragtoggle = nil
-	local dragspeed = 0.15
+	local dragspeed = 1
 	local dragstart = nil
 	local startpos = nil
 	local function updateinp(input)
@@ -222,9 +222,6 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 		function(input2)
 			if input2.UserInputType == Enum.UserInputType.MouseButton1 then
 				dragtoggle = true
-				local userInputService = game:GetService("UserInputService")
-				userInputService.MouseIconEnabled = true
-				game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10710857703"
 				dragstart = input2.Position
 				startpos = todrag.Position
 				input2.Changed:Connect(
@@ -252,7 +249,16 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 	
 end
 coroutine.wrap(QLPEVC_fake_script)()
-
+DaTopBar.MouseEnter:Connect(function()
+local userInputService = game:GetService("UserInputService")
+userInputService.MouseIconEnabled = true
+game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10710857703"		
+end)
+DaTopBar.MouseLeave:Connect(function()
+local userInputService = game:GetService("UserInputService")
+userInputService.MouseIconEnabled = true
+game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10710857703"		
+end)
 local ts = game:GetService("TweenService")
 local objec = goupdown
 local infomat = TweenInfo.new(.5,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut)
