@@ -29,7 +29,7 @@ SoScrollWorks.Parent = DaTopbar
 SoScrollWorks.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 SoScrollWorks.BorderSizePixel = 0
 SoScrollWorks.Position = UDim2.new(0, 0, 1, 0)
-SoScrollWorks.Size = UDim2.new(0, 210, 0, 245)
+SoScrollWorks.Size = UDim2.new(0, 210, 0, 253)
 
 nyoooooom.Name = "nyoooooom"
 nyoooooom.Parent = SoScrollWorks
@@ -231,53 +231,17 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 		end
 	)
 	
-	local UIS = game:GetService("UserInputService")
-	local todrag = script.Parent
-	local dragtoggle = nil
-	local dragspeed = 0.15
-	local dragstart = nil
-	local startpos = nil
-	local function updateinp(input)
-		local dlt = input.Position - dragstart
-		local pos = UDim2.new(startpos.X.Scale, startpos.X.Offset + dlt.X, startpos.Y.Scale, startpos.Y.Offset + dlt.Y)
-		game:GetService("TweenService"):Create(
-		todrag,
-		TweenInfo.new(dragspeed),
-		{
-			Position = pos
-		}
-		):Play()
-	end
-	todrag.InputBegan:Connect(
-		function(input2)
-			if input2.UserInputType == Enum.UserInputType.MouseButton1 then
-				dragtoggle = true
-				dragstart = input2.Position
-				startpos = todrag.Position
-				input2.Changed:Connect(
-					function()
-						if input2.UserInputState == Enum.UserInputState.End then
-							dragtoggle = false
-						end
-					end
-				)
-			end
-		end
-	)
-	UIS.InputChanged:Connect(
-		function(input3)
-			if input3.UserInputType == Enum.UserInputType.MouseMovement then
-				if dragtoggle then
-					updateinp(input3)
-				end
-			end
-		end
-	)
-	
 end
 coroutine.wrap(QLPEVC_fake_script)()
+local DaTopbar = script.Parent
 DaTopbar.MouseEnter:Connect(function()
 	local userInputService = game:GetService("UserInputService")
 	userInputService.MouseIconEnabled = true
+	game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10710857703"
+end)
+DaTopbar.MouseLeave:Connect(function()
+	local userInputService = game:GetService("UserInputService")
+	userInputService.MouseIconEnabled = true
+	game.Players.LocalPlayer:GetMouse().Icon = ""
 end)
 return lib
