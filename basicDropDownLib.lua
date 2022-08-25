@@ -51,6 +51,7 @@ Freak.Padding = UDim.new(0.00800000038, 0)
 
 
 TITLE.Name = "TITLE"
+TITLE.Active = false
 TITLE.Parent = DaTopbar
 TITLE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.BackgroundTransparency = 1.000
@@ -204,7 +205,7 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 	local UIS = game:GetService("UserInputService")
 	local todrag = script.Parent
 	local dragtoggle = nil
-	local dragspeed = 1
+	local dragspeed = 0
 	local dragstart = nil
 	local startpos = nil
 	local function updateinp(input)
@@ -249,15 +250,13 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 	
 end
 coroutine.wrap(QLPEVC_fake_script)()
-DaTopBar.MouseEnter:Connect(function()
-local userInputService = game:GetService("UserInputService")
-userInputService.MouseIconEnabled = true
+DaTopbar.MouseEnter:Connect(function()
+    print("in")
 game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10710857703"		
 end)
-DaTopBar.MouseLeave:Connect(function()
-local userInputService = game:GetService("UserInputService")
-userInputService.MouseIconEnabled = true
-game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10710857703"		
+DaTopbar.MouseLeave:Connect(function()
+    print("hone")
+game.Players.LocalPlayer:GetMouse().Icon = ""		
 end)
 local ts = game:GetService("TweenService")
 local objec = goupdown
@@ -270,10 +269,9 @@ goupdown.MouseButton1Down:Connect(function()
 		SoScrollWorks:TweenSize(UDim2.new(0,210,0,0),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,.7,true)
 		cansee = false
 	elseif cansee == false then
-		print("poopy")
 		NOTON:Play()
 		SoScrollWorks:TweenSize(UDim2.new(0,210,0,253),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,.7,true)
 		cansee = true
 	end
 end)
-return lib
+return lib;
