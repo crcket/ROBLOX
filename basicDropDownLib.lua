@@ -1,8 +1,4 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-local cansee= true
+local cansee = true
 local ScreenGui = Instance.new("ScreenGui")
 local DaTopbar = Instance.new("Frame")
 local SoScrollWorks = Instance.new("Frame")
@@ -10,8 +6,6 @@ local nyoooooom = Instance.new("ScrollingFrame")
 local Freak = Instance.new("UIListLayout")
 local TITLE = Instance.new("TextLabel")
 local goupdown = Instance.new("ImageButton")
-
---Properties:
 
 ScreenGui.Parent = game.CoreGui
 ScreenGui.Name = "fortanitedeyapubagjee"
@@ -103,8 +97,7 @@ function lib:MakeButton(text,call)
 	cornr.Name = "cornr"
 	cornr.Parent = Butin
 end
-function lib:MakeToggle(text,oncall,offcall)
-	local default = false
+function lib:MakeToggle(text,cellbeck)
 	local buttonhaha = Instance.new("TextLabel")
 	local odp = Instance.new("UICorner")
 	local youllseethistext = Instance.new("TextLabel")
@@ -175,29 +168,21 @@ function lib:MakeToggle(text,oncall,offcall)
 	on.Name = "on"
 	on.Parent = somebodycallthedocta
 	
-	on.Enabled = default
-	
-	local function check()
-		local enabled = default
-		if enabled then
-			off.Enabled = false
-			on.Enabled = true
-			pcall(oncall)
-			default = false
-		elseif enabled == false then
-			off.Enabled = true
-			on.Enabled = false
-			pcall(offcall)
-			default = true
-			return
-		end
+	local enabled = false
+	function Fire()
+	  enabled = not enabled
+	  if enabled then
+	      on.Enabled = true
+	      off.Enabled = false
+	  end
+      if not enabled then
+          on.Enabled = false
+          off.Enabled = true
+      end
+      pcall(cellbeck,enabled)
 	end
-	somebodycallthedocta.MouseButton1Click:Connect(function()
-		check()
-	end)
-	check()
+	somebodycallthedocta.MouseButton1Click:Connect(Fire)
 end
--- Scripts:
 
 local function QLPEVC_fake_script() -- DaTopbar.LocalScript 
 	local script = Instance.new('LocalScript', DaTopbar)
@@ -251,12 +236,10 @@ local function QLPEVC_fake_script() -- DaTopbar.LocalScript
 end
 coroutine.wrap(QLPEVC_fake_script)()
 DaTopbar.MouseEnter:Connect(function()
-    print("in")
-game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10710857703"		
+	game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10710857703"		
 end)
 DaTopbar.MouseLeave:Connect(function()
-    print("hone")
-game.Players.LocalPlayer:GetMouse().Icon = ""		
+	game.Players.LocalPlayer:GetMouse().Icon = ""		
 end)
 local ts = game:GetService("TweenService")
 local objec = goupdown
