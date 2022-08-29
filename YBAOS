@@ -1169,15 +1169,19 @@ local function UNZJTOP_fake_script() -- MiscButton.HoverMisc
 end
 coroutine.wrap(UNZJTOP_fake_script)()
 local function WGNWMQR_fake_script() -- YourUser.YourUserScript 
+	if not getgenv().hidename then
 	local script = Instance.new('LocalScript', YourUser)
 
 	script.Parent.Text = game.Players.LocalPlayer.Name
+	end
 end
 coroutine.wrap(WGNWMQR_fake_script)()
 local function HOITTEZ_fake_script() -- YourId.YourIdScript 
+	if not getgenv().hidename then
 	local script = Instance.new('LocalScript', YourId)
 
 	script.Parent.Text = game.Players.LocalPlayer.UserId
+	end
 end
 coroutine.wrap(HOITTEZ_fake_script)()
 
