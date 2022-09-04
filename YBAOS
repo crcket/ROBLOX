@@ -772,19 +772,19 @@ local function DAILNU_fake_script() -- SetWorth.WorthScript
 	script.Parent.MouseButton1Click:Connect(
 		function()
 			
-			if script.Parent.Parent.WorthinessInput.Text == "1" then
+			if script.Parent.Parent.WorthinessInput.Text == "1" or script.Parent.Parent.WorthinessInput.Text == "one" then
 				wo1()
 				Notify:Create("Applied Worthiness [1]",5)
-			elseif script.Parent.Parent.WorthinessInputTxt.Text == "2" then
+			elseif script.Parent.Parent.WorthinessInputTxt.Text == "2" or script.Parent.Parent.WorthinessInput.Text == "two"then
 				wo2()
 				Notify:Create("Applied Worthiness [2]",5)
-			elseif script.Parent.Parent.WorthinessInputTxt.Text == "3" then
+			elseif script.Parent.Parent.WorthinessInputTxt.Text == "3" or script.Parent.Parent.WorthinessInput.Text == "three" then
 				wo3()
 				Notify:Create("Applied Worthiness [3]",5)
-			elseif script.Parent.Parent.WorthinessInputTxt.Text == "4" then
+			elseif script.Parent.Parent.WorthinessInputTxt.Text == "4" or script.Parent.Parent.WorthinessInput.Text == "four" then
 				wo4()
 				Notify:Create("Applied Worthiness [4]",5)
-			elseif script.Parent.Parent.WorthinessInputTxt.Text == "5" then
+			elseif script.Parent.Parent.WorthinessInputTxt.Text == "5" or script.Parent.Parent.WorthinessInput.Text == "five" then
 				wo5()
 				Notify:Create("Applied Worthiness [5]",5)
 			end
@@ -819,15 +819,15 @@ local function ZKGVMSV_fake_script() -- UseArrow.ArrowScript
 					game.Players.LocalPlayer.Character[b.Name]:Activate();
 				end;
 			end;
-			task.wait(0.5);
+			task.wait(0.25);
 			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
 				v.Function();
 			end;
-			task.wait(0.5);
+			task.wait(0.25);
 			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
 				v.Function();
 			end;
-			task.wait(0.5)
+			task.wait(0.25)
 			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
 				v.Function();
 			end;
@@ -851,15 +851,15 @@ local function QOEAGU_fake_script() -- UseRoka.RokaScript
 					game.Players.LocalPlayer.Character[b.Name]:Activate();
 				end;
 			end;
-			task.wait(0.5);
+			task.wait(0.25);
 			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
 				v.Function();
 			end;
-			task.wait(0.5);
+			task.wait(0.25);
 			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
 				v.Function();
 			end;
-			task.wait(0.5)
+			task.wait(0.25)
 			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
 				v.Function();
 			end;
