@@ -820,15 +820,15 @@ local function ZKGVMSV_fake_script() -- UseArrow.ArrowScript
 				end;
 			end;
 			task.wait(0.25);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame:WaitForChild("ClickContinue").MouseButton1Click)) do
 				v.Function();
 			end;
 			task.wait(0.25);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame:WaitForChild("Options").Option1.TextButton.MouseButton1Click)) do
 				v.Function();
 			end;
 			task.wait(0.25)
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame:WaitForChild("ClickContinue").MouseButton1Click)) do
 				v.Function();
 			end;
 		end
@@ -852,15 +852,15 @@ local function QOEAGU_fake_script() -- UseRoka.RokaScript
 				end;
 			end;
 			task.wait(0.25);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame:WaitForChild("ClickContinue").MouseButton1Click)) do
 				v.Function();
 			end;
 			task.wait(0.25);
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)) do
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame:WaitForChild("Options").Option1.TextButton.MouseButton1Click)) do
 				v.Function();
 			end;
 			task.wait(0.25)
-			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)) do
+			for i, v in pairs(getconnections((game:GetService("Players")).LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame:WaitForChild("ClickContinue").MouseButton1Click)) do
 				v.Function();
 			end;
 		end
