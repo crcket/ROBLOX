@@ -632,13 +632,23 @@ local function WWZED_fake_script() -- StandLabel.YourStandLbl
 end
 coroutine.wrap(WWZED_fake_script)()
 local function DRFYH_fake_script() -- ArrowSkinLabel.Unlucky 
+local function getPity()
+local ad = not workspace.Map:FindFirstChild("Halloween_Parts") and .02 or .04
+
+local onePercent = 1.00
+for i = onePercent,game.Players.LocalPlayer.PlayerStats.PityCount.Value do
+    onePercent = onePercent+ad
+end
+local b = math.floor(onePercent *100)/100
+b = tostring(b).."%"
+return b
+end
 	local script = Instance.new('LocalScript', ArrowSkinLabel)
 
-	script.Parent.Text = "Arrows Since Skin: "..game.Players.LocalPlayer.PlayerStats.PityCount.Value
+	ArrowSkinLabel.Text = "Pity: "..getPity()
 	game.Players.LocalPlayer.PlayerStats.PityCount.Changed:Connect(function()
-	script.Parent.Text = "Arrows Since Skin: "..game.Players.LocalPlayer.PlayerStats.PityCount.Value
+	ArrowScriptLabel.Text = "Pity: "..getPity()
 	end)
-	
 end
 coroutine.wrap(DRFYH_fake_script)()
 local function POKLVYG_fake_script() -- SkillPointsLabel.LocalScript 
