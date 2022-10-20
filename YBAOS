@@ -647,7 +647,7 @@ end
 
 	ArrowSkinLabel.Text = "Pity: "..getPity()
 	game.Players.LocalPlayer.PlayerStats.PityCount.Changed:Connect(function()
-	ArrowScriptLabel.Text = "Pity: "..getPity()
+	ArrowSkinLabel.Text = "Pity: "..getPity()
 	end)
 end
 coroutine.wrap(DRFYH_fake_script)()
