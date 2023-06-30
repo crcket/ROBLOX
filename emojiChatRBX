@@ -1,0 +1,35 @@
+repeat task.wait() until game:IsLoaded() and game.Chat and game.ReplicatedStorage and game.ReplicatedFirst
+local emojis = {
+	["🤣"] = {"lol","xd","rofl","lmao","lmfao"},
+	["😀"] = {":d"},
+	["😥"] = {";("},
+	["😨"] = {":o","woah","scared"},
+	["🤨"] = {"huh","???","??","sus","tf"},
+	["🤓"] = {"nerd","erm"},
+	["🤠👋"] = {"howdy"},
+	["ez"] = {"gg"},
+	["🍎 ro ka please 🥺"] = {"roka"},
+	["fight me noob im gonna ez solo you"] = {"1v1","fight me"},
+	["squito"] = {"vamp","vampire"},
+	["🎈"] = {"gay","furry","furries","retard","kys","faggot","fag","lgbt","lgbtq+","lgbtq","lgbtqia+","lgbtqia","queer"}
+}
+
+local smrq = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+local old;
+old = hookmetamethod(game, "__namecall", function(self, ...)
+	local args = { ... }
+	local ncm = getnamecallmethod()
+    if ncm == "FireServer" and self == smrq then
+		local msg = args[1]
+		for emoji,alTbl in pairs(emojis) do
+    for _,_ in pairs(alTbl) do
+        if table.find(alTbl,msg:lower()) then
+            msg = emoji
+            break
+        end
+    end
+end
+		args[1] = msg
+	end
+	return old(self, unpack(args))
+end)
