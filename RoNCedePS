@@ -1,0 +1,36 @@
+-- / Only works in private servers \ --
+-- ////////// Settings
+local Settings = {
+["MainCountry"] = "Andorra";
+["takeCountry"] = {"San Marino"}
+}
+-- ////////// Vars
+local setCountry= workspace.GameManager.CreateCountry
+local abandon = workspace.GameManager.Abandon
+local giveTo = workspace.Baseplate.Cities[Settings["MainCountry"]]
+local cede = workspace.GameManager.Cede
+local balance = workspace.CountryData[Settings["MainCountry"]].Economy.Balance.Value;
+local manPower = workspace.CountryData[Settings["MainCountry"]].Manpower.Value.X;
+local forGive = {{balance,"One Time"},{manPower,"One Time"}};
+local mngAlliance = workspace.GameManager.ManageAlliance
+local howLong = 11.333*#Settings["takeCountry"]
+local units = workspace.Units:GetChildren()
+messagebox("This will take around "..tostring(howLong).." seconds ("..tostring(howLong/60).." mins) press OK to start")
+for _,v in pairs(Settings["takeCountry"]) do
+    abandon:FireServer()
+    task.wait(4.5)
+    setCountry:FireServer(v)
+    task.wait(6.5)
+    mngAlliance:FireServer(Settings["MainCountry"], "Aid", forGive)
+    task.wait()
+    workspace.GameManager.IssueUnitOrder:FireServer(units, "Disband")
+    task.wait(.333)
+    cede:FireServer(workspace.Baseplate.Cities[v]:GetChildren(),giveTo)
+    abandon:FireServer() 
+    syn.toast_notification({
+    Type = ToastType.Success,
+    Duration = 5,
+    Title = "SUCCESS",
+    Content = "You have successfully ceded all cities from "..v.." to "..Settings["MainCountry"]})
+end
+messagebox("Ceded all countries you asked for!","FINISHED!!")
