@@ -19,48 +19,36 @@ MainGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 local SubSection = {}
 
 local function makeDraggable(frame)
-    -- Variables for tracking mouse movement and frame position
     local dragging = false
     local dragInput
     local startPos
     local startMousePos
     local userInputService = game:GetService("UserInputService")
-
-    -- Function to start dragging
     local function onDragStart(input)
         dragging = true
         startPos = frame.Position
         startMousePos = input.Position
     end
-
-    -- Function to update the position as the mouse moves
     local function onDragMove(input)
         if dragging then
             local delta = input.Position - startMousePos
             frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
         end
     end
-
-    -- Function to stop dragging
     local function onDragEnd()
         dragging = false
     end
-
-    -- Connect events to start, move, and stop dragging
     frame.InputBegan:Connect(function(input, gameProcessed)
         if gameProcessed then return end
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             onDragStart(input)
         end
     end)
-
-    -- Use UserInputService to track mouse movement in a more reliable way
     userInputService.InputChanged:Connect(function(input)
         if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
             onDragMove(input)
         end
     end)
-
     frame.InputEnded:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             onDragEnd()
@@ -68,12 +56,7 @@ local function makeDraggable(frame)
     end)
 end
 
-
-lib.MakeContainer = function(Settings: {})
-	if not Settings.Name then
-		warn(`Missing essential setting (string) \{Name = text\}`)
-	end
-	
+lib.MakeContainer = function(Name)
 	local Container = Instance.new("Frame")
 	local Sect1 = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
@@ -129,7 +112,7 @@ lib.MakeContainer = function(Settings: {})
 	TitleSect.BorderSizePixel = 0
 	TitleSect.Size = UDim2.new(1, 0, 1, 0)
 	TitleSect.Font = Enum.Font.Code
-	TitleSect.Text = Settings.Name
+	TitleSect.Text = Name
 	TitleSect.TextXAlignment = Enum.TextXAlignment.Left
 	TitleSect.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TitleSect.TextScaled = true
@@ -156,13 +139,7 @@ lib.MakeContainer = function(Settings: {})
     
 	return Container, setmetatable({ SectionInstance = SubSect1 }, { __index = SubSection })
 end
-SubSection.MakeButton = function(self, Settings : {})
-	if not Settings.Name then
-		warn("Missing setting: Name")
-	end
-	if not Settings.CallbackFunction then
-		warn("Missing setting: CallbackFunction")
-	end
+SubSection.MakeButton = function(self, Name, func)
 	local ActionButton = Instance.new("TextButton")
 	local UICorner_3 = Instance.new("UICorner")
 
@@ -178,14 +155,14 @@ SubSection.MakeButton = function(self, Settings : {})
 	ActionButton.TextScaled = true
 	ActionButton.TextSize = 14.000
 	ActionButton.TextWrapped = true
-	ActionButton.Text = Settings.Name
+	ActionButton.Text = Name
 
 	UICorner_3.CornerRadius = UDim.new(0, 2)
 	UICorner_3.Parent = ActionButton
 
-	ActionButton.MouseButton1Click:Connect(Settings.CallbackFunction)
+	ActionButton.MouseButton1Click:Connect(func)
 end
-SubSection.MakeToggle = function(self,Settings : {})
+SubSection.MakeToggle = function(self, Name, func)
 	if not Settings.Name then
 		warn(`Missing essential setting (string) \{Name = text\}`)
 	end
@@ -204,7 +181,7 @@ SubSection.MakeToggle = function(self,Settings : {})
 	ToggleButton.TextScaled = true
 	ToggleButton.TextSize = 14.000
 	ToggleButton.TextWrapped = true
-	ToggleButton.Text = Settings.Name
+	ToggleButton.Text = Name
 
 	UICorner_4.CornerRadius = UDim.new(0, 2)
 	UICorner_4.Parent = ToggleButton
@@ -231,7 +208,7 @@ SubSection.MakeToggle = function(self,Settings : {})
 		else
 			ToggleStatus.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 		end
-		pcall(Settings.CallbackFunction,bool)
+		pcall(func,bool)
 	end
 	ToggleButton.MouseButton1Click:Connect(fire)
 end
