@@ -13,7 +13,7 @@ local UICorner_000 = Instance.new("UICorner")
 
 
 MainGUI.Name = "MainGUI"
-MainGUI.Parent = game.CoreGui
+MainGUI.Parent = gethui()
 MainGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 local SubSection = {}
