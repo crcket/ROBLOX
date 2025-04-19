@@ -190,10 +190,10 @@ codeInputTextBox.FocusLost:Connect(function(enterPressed:boolean)
 end)
 
 console.send = function(msg, messageType)
-	local shouldAutoScroll = isNearBottom() 
 	local color = "#FFFFFF"
 	if messageType == "ITEM_TIMEOUT" then color = "#A2C2FF"
 	elseif messageType == "ITEM_PICKUP" then color = "#B3FFB3"
+	end
 	local formattedMsg = `<font color="{color}">> {msg}</font>`
 
 	if consoleOutputLabel.Text == "" then
