@@ -18,10 +18,6 @@ local scrollDownBtn = Instance.new("ImageButton")
 local uiAspectRatioConstraint2 = Instance.new("UIAspectRatioConstraint")
 local localScript = Instance.new("LocalScript")
 
--- Properties:
-
-
-
 screenGui.Parent = game:GetService("CoreGui")
 
 mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -67,7 +63,7 @@ textLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 textLabel.BackgroundTransparency = 1
 textLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 textLabel.BorderSizePixel = 0
-textLabel.Size = UDim2.new(1, 0, 2048, 0)
+textLabel.Size = UDim2.new(1, 0, 9e9, 0)
 textLabel.Parent = scrollingFrame
 
 textSizeConstraint.MaxTextSize = 14
