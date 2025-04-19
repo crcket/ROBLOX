@@ -17,7 +17,7 @@ local uiAspectRatioConstraint1 = Instance.new("UIAspectRatioConstraint")
 local scrollDownBtn = Instance.new("ImageButton")
 local uiAspectRatioConstraint2 = Instance.new("UIAspectRatioConstraint")
 local localScript = Instance.new("LocalScript")
-
+local console = {}
 screenGui.Parent = game:GetService("CoreGui")
 
 mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -178,113 +178,8 @@ local UserInputService = game:GetService("UserInputService")
 local codeInputTextBox = runCodeLine
 local consoleOutputLabel = textLabel
 
-local AUTO_SCROLL_THRESHOLD = 75
-
-local isUserScrolling = false
-local autoScrollEnabled = true
-local wasNearBottom = true
-
-local function getMaxScrollY()
-	local canvasY = scrollingFrame.CanvasSize.Y.Offset
-	local frameY = scrollingFrame.AbsoluteSize.Y
-	return math.max(0, canvasY - frameY)
-end
-
-local function isNearBottom()
-	local maxY = getMaxScrollY()
-	local currentY = scrollingFrame.CanvasPosition.Y
-
-	if maxY <= 0 then return true end
-
-	return (maxY - currentY) <= AUTO_SCROLL_THRESHOLD
-end
-
-local function jumpToBottom()
-	local maxY = getMaxScrollY()
-	scrollingFrame.CanvasPosition = Vector2.new(scrollingFrame.CanvasPosition.X, maxY)
-	wasNearBottom = true
-	isUserScrolling = false
-end
-
-scrollingFrame.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseWheel then
-		isUserScrolling = true
-	end
-end)
-
-scrollingFrame.InputEnded:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-		task.delay(0.1, function()
-
-		end)
-	end
-end)
-
-scrollingFrame:GetPropertyChangedSignal("CanvasPosition"):Connect(function()
-	local currentY = scrollingFrame.CanvasPosition.Y
-	wasNearBottom = isNearBottom()
-
-	if isUserScrolling then
-		task.delay(0.3, function()
-			if scrollingFrame.CanvasPosition.Y == currentY then 
-				isUserScrolling = false
-			end
-		end)
-	end
-end)
-
-trashCan.MouseButton1Click:Connect(function()
-	consoleOutputLabel.Text = ""
-	scrollingFrame.CanvasSize = UDim2.fromOffset(0, 0)
-	scrollingFrame.CanvasPosition = Vector2.new(0, 0)
-	wasNearBottom = true
-	isUserScrolling = false
-end)
-
-scrollDownBtn.MouseButton1Click:Connect(function()
-    jumpToBottom()
-end)
-local function makeDraggable(frame)
-	local dragging = false
-	local dragInput
-	local startPos
-	local startMousePos
-	local userInputService = game:GetService("UserInputService")
-	local function onDragStart(input)
-		dragging = true
-		startPos = frame.Position
-		startMousePos = input.Position
-	end
-	local function onDragMove(input)
-		if dragging then
-			local delta = input.Position - startMousePos
-			frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-		end
-	end
-	local function onDragEnd()
-		dragging = false
-	end
-	frame.InputBegan:Connect(function(input, gameProcessed)
-		if gameProcessed then return end
-		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			onDragStart(input)
-		end
-	end)
-	userInputService.InputChanged:Connect(function(input)
-		if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-			onDragMove(input)
-		end
-	end)
-	frame.InputEnded:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			onDragEnd()
-		end
-	end)
-end
-
 makeDraggable(mainFrame)
 
--- Code Execution (your existing code)
 codeInputTextBox.FocusLost:Connect(function(enterPressed:boolean)
 	if enterPressed and codeInputTextBox.Text ~= "" then
         local codeToRun = codeInputTextBox.Text
@@ -294,32 +189,23 @@ codeInputTextBox.FocusLost:Connect(function(enterPressed:boolean)
 	end
 end)
 
-
-
-logService.MessageOut:Connect(function(msg, messageType)
+console.send = function(msg, messageType)
 	local shouldAutoScroll = isNearBottom() 
 	local color = "#FFFFFF"
-	if messageType == Enum.MessageType.MessageInfo then color = "#A2C2FF"
-	elseif messageType == Enum.MessageType.MessageError then color = "#FFB3B3"
-	elseif messageType == Enum.MessageType.MessageOutput then color = "#B3FFB3"
-	elseif messageType == Enum.MessageType.MessageWarning then color = "#FFFFB3" end
+	if messageType == "ITEM_TIMEOUT" then color = "#A2C2FF"
+	elseif messageType == "ITEM_PICKUP" then color = "#B3FFB3"
 	local formattedMsg = `<font color="{color}">> {msg}</font>`
-
 
 	if consoleOutputLabel.Text == "" then
 		consoleOutputLabel.Text = formattedMsg
 	else
 		consoleOutputLabel.Text = consoleOutputLabel.Text .. "\n" .. formattedMsg
 	end
+
 	task.wait()
 	local newCanvasY = consoleOutputLabel.TextBounds.Y
 	local padding = 5 
 	scrollingFrame.CanvasSize = UDim2.fromOffset(0, newCanvasY + padding)
-	if autoScrollEnabled and shouldAutoScroll and not isUserScrolling then
-		jumpToBottom()
-	end
-end)
-task.wait(0.5) 
-if autoScrollEnabled then
-	jumpToBottom()
 end
+
+return console
