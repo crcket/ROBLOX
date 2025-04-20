@@ -51,6 +51,44 @@ TextLabel.TextSize = 14.000
 TextLabel.TextStrokeTransparency = 0.000
 TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 TextLabel.TextYAlignment = Enum.TextYAlignment.Top
+local function makeDraggable(frame)
+	local dragging = false
+	local dragInput
+	local startPos
+	local startMousePos
+	local userInputService = game:GetService("UserInputService")
+	local function onDragStart(input)
+		dragging = true
+		startPos = frame.Position
+		startMousePos = input.Position
+	end
+	local function onDragMove(input)
+		if dragging then
+			local delta = input.Position - startMousePos
+			frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		end
+	end
+	local function onDragEnd()
+		dragging = false
+	end
+	frame.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then return end
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			onDragStart(input)
+		end
+	end)
+	userInputService.InputChanged:Connect(function(input)
+		if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+			onDragMove(input)
+		end
+	end)
+	frame.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			onDragEnd()
+		end
+	end)
+end
+makeDraggable(mainBypass)
 local console = {}
 function console.Send(Message, messageType)
 	local color = "#FFFFFF"
