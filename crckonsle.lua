@@ -103,7 +103,8 @@ function console.Send(Message, messageType)
 	else
 		TextLabel.Text = TextLabel.Text.."\n"..formattedMsg
 	end
-	ScrollingFrame.CanvasSize = UDim2.fromOffset(0,TextLabel.AbsoluteSize.Y)
+	task.wait()
+	ScrollingFrame.CanvasSize = UDim2.fromOffset(0, TextLabel.TextBounds.Y)
 end
 
 return console
