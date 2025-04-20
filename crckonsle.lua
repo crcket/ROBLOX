@@ -90,13 +90,14 @@ local function makeDraggable(frame)
 end
 makeDraggable(mainBypass)
 local console = {}
-function console.Send(Message, messageType)
+local colors = {
+	["ITEM_PICKUP"] = "#B3FFB3";
+	["ITEM_TIMEOUT"] = "FFFFB3";
+	["ANNOUNCEMENT"] = "#ee4035"
+}
+console.Send = task.spawn(function(Message,messageType)
 	local color = "#FFFFFF"
-	if messageType == "ITEM_PICKUP" then 
-		color = "#B3FFB3"
-	elseif messageType == "ITEM_TIMEOUT" then 
-		color = "#FFFFB3" 
-	end
+	color = colors[messageType]
 	local formattedMsg = `<font color="{color}">> {Message}</font>`
 	if TextLabel.Text == "" then
 		TextLabel.Text = formattedMsg
@@ -105,6 +106,6 @@ function console.Send(Message, messageType)
 	end
 	task.wait()
 	ScrollingFrame.CanvasSize = UDim2.fromOffset(0, TextLabel.TextBounds.Y)
-end
+end)
 
 return console
