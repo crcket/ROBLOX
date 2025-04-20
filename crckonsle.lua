@@ -97,7 +97,10 @@ local colors = {
 }
 console.Send = function(Message,messageType)
 	local color = "#FFFFFF"
-	color = colors[messageType]
+	if messageType == "ITEM_PICKUP" then color = "#B3FFB3"
+		elseif messageType == "ITEM_TIMEOUT" then color = "#FFFFB3"
+		elseif messageType == "ANNOUNCEMENT" then color = "#ee4035""
+	end
 	local formattedMsg = `<font color="{color}">> {Message}</font>`
 	if TextLabel.Text == "" then
 		TextLabel.Text = formattedMsg
