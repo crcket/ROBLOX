@@ -95,7 +95,7 @@ local colors = {
 	["ITEM_TIMEOUT"] = "FFFFB3";
 	["ANNOUNCEMENT"] = "#ee4035"
 }
-console.Send = task.spawn(function(Message,messageType)
+console.Send = function(Message,messageType)
 	local color = "#FFFFFF"
 	color = colors[messageType]
 	local formattedMsg = `<font color="{color}">> {Message}</font>`
@@ -106,6 +106,6 @@ console.Send = task.spawn(function(Message,messageType)
 	end
 	task.wait()
 	ScrollingFrame.CanvasSize = UDim2.fromOffset(0, TextLabel.TextBounds.Y)
-end)
+end
 
 return console
