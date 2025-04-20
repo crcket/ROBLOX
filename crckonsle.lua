@@ -46,6 +46,7 @@ TextLabel.Size = UDim2.new(1, 0, 1, 0)
 TextLabel.Font = Enum.Font.SourceSans
 TextLabel.RichText = true
 TextLabel.Text = ""
+TextLabel.TextWrapped = true
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 14.000
 TextLabel.TextStrokeTransparency = 0.000
