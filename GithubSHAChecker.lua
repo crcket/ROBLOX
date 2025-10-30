@@ -2,7 +2,7 @@ local Checker = {}
 
 function Checker.CheckGithubSHA(githubUrl)
     local user, repo, ref = githubUrl:match('githubusercontent%.com/([^/]+)/([^/]+)/(.+)')
-    if not user or not repo or not ref then return end
+    if not user or not repo or not ref then return 00 end
     local branch = ref:match('refs/heads/([^/]+)')
     local remainingPath = ref:match('refs/heads/[^/]+/(.+)')
     if not branch then
@@ -16,9 +16,9 @@ function Checker.CheckGithubSHA(githubUrl)
         Method = 'GET',
         Headers = { ['User-Agent'] = 'GTC' },
     })
-    if not response.Success then return end
+    if not response.Success then return 00 end
     local data = game:GetService('HttpService'):JSONDecode(response.Body)
-    if not data or not data.sha then return end
+    if not data or not data.sha then return 00 end
     return data.sha:sub(1, 7)
 end
 
