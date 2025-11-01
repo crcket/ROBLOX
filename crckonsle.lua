@@ -97,19 +97,21 @@ local colors = {
 	["ANNOUNCEMENT"] = "#ee4035"
 }
 console.Send = function(Message,messageType)
-	local color = "#FFFFFF"
-	if messageType == "ITEM_PICKUP" then color = "#B3FFB3"
-		elseif messageType == "ITEM_TIMEOUT" then color = "#FFFFB3"
-		elseif messageType == "ANNOUNCEMENT" then color = "#ee4035"
+	task.spawn(function()
+		local color = "#FFFFFF"
+		if messageType == "ITEM_PICKUP" then color = "#B3FFB3"
+			elseif messageType == "ITEM_TIMEOUT" then color = "#FFFFB3"
+			elseif messageType == "ANNOUNCEMENT" then color = "#ee4035"
+		end
+		local formattedMsg = `<font color="{color}">> {Message}</font>`
+		if TextLabel.Text == "" then
+			TextLabel.Text = formattedMsg
+		else
+			TextLabel.Text = TextLabel.Text.."\n"..formattedMsg
+		end
+		task.wait()
+		ScrollingFrame.CanvasSize = UDim2.fromOffset(0, TextLabel.TextBounds.Y)
 	end
-	local formattedMsg = `<font color="{color}">> {Message}</font>`
-	if TextLabel.Text == "" then
-		TextLabel.Text = formattedMsg
-	else
-		TextLabel.Text = TextLabel.Text.."\n"..formattedMsg
-	end
-	task.wait()
-	ScrollingFrame.CanvasSize = UDim2.fromOffset(0, TextLabel.TextBounds.Y)
 end
 
 return console
