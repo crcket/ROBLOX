@@ -97,7 +97,6 @@ local colors = {
 	["ANNOUNCEMENT"] = "#ee4035"
 }
 console.Send = function(Message,messageType)
-	task.spawn(function(Message,messageType)
 		local color = "#FFFFFF"
 		if messageType == "ITEM_PICKUP" then color = "#B3FFB3"
 			elseif messageType == "ITEM_TIMEOUT" then color = "#FFFFB3"
@@ -111,7 +110,6 @@ console.Send = function(Message,messageType)
 		end
 		task.wait()
 		ScrollingFrame.CanvasSize = UDim2.fromOffset(0, TextLabel.TextBounds.Y)
-	end
 end
 
 return console
