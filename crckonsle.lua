@@ -97,7 +97,7 @@ local colors = {
 	["ANNOUNCEMENT"] = "#ee4035"
 }
 console.Send = function(Message,messageType)
-	task.spawn(function()
+	task.spawn(function(Message,messageType)
 		local color = "#FFFFFF"
 		if messageType == "ITEM_PICKUP" then color = "#B3FFB3"
 			elseif messageType == "ITEM_TIMEOUT" then color = "#FFFFB3"
