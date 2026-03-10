@@ -1,0 +1,483 @@
+-- Decompiled with Velocity Script Decompiler
+
+
+local v1 = game:GetService("ReplicatedStorage")
+local v_u_2 = game:GetService("Debris")
+local v_u_3 = game:GetService("TweenService")
+local v_u_4 = require(v1:WaitForChild("client_utils"))
+local v_u_5 = require(v1.modules.vfx.random.Crater)
+local v_u_6 = require(v1.modules.vfx.random.Rocks)
+local v_u_7 = workspace.Effects
+local v_u_8 = workspace.Live
+local v_u_9 = workspace.Map
+local v_u_10 = workspace.Terrain
+local v_u_11 = math.max
+local v_u_12 = task.delay
+local v_u_13 = task.wait
+local v_u_14 = task.spawn
+local v_u_15 = table.clear
+local v_u_16 = ColorSequence.new
+local v_u_17 = ColorSequenceKeypoint.new
+local v_u_18 = NumberSequenceKeypoint.new
+local v_u_19 = NumberSequence.new
+local v_u_20 = Vector3.new
+local v_u_21 = CFrame.new
+local v_u_22 = Instance.new
+local v_u_23 = Ray.new
+local v_u_24 = RaycastParams.new
+local v_u_25 = { v_u_7, v_u_8 }
+local function v_u_37(p_u_26, p27)
+    -- upvalues: (copy) v_u_22, (copy) v_u_2, (copy) v_u_4, (copy) v_u_18, (copy) v_u_11, (copy) v_u_19, (copy) v_u_13
+    local v_u_28 = p_u_26.Transparency.Keypoints
+    local v_u_29 = #v_u_28
+    local v_u_30 = v_u_22("NumberValue")
+    v_u_30.Value = 0
+    v_u_2:AddItem(v_u_30, p27 + 0.5)
+    local v31 = {
+        ["Time"] = p27,
+        ["instance"] = v_u_30,
+        ["Properties"] = {
+            ["Value"] = 1
+        }
+    }
+    v_u_4.Tween(v31):Play()
+    local v36 = v_u_30.Changed:Connect(function()
+        -- upvalues: (copy) v_u_30, (copy) v_u_29, (copy) v_u_28, (ref) v_u_18, (ref) v_u_11, (copy) p_u_26, (ref) v_u_19
+        local v32 = v_u_30.Value
+        local v33 = table.create(v_u_29)
+        for v34, v35 in ipairs(v_u_28) do
+            v33[v34] = v_u_18(v35.Time, (v_u_11(v35.Value, v32)))
+        end
+        p_u_26.Transparency = v_u_19(v33)
+    end)
+    v_u_13(p27)
+    v36:Disconnect()
+    v_u_30:Destroy()
+end
+return function(p_u_38)
+    -- upvalues: (copy) v_u_15, (copy) v_u_22, (copy) v_u_13, (copy) v_u_6, (copy) v_u_24, (copy) v_u_9, (copy) v_u_25, (copy) v_u_5, (copy) v_u_7, (copy) v_u_2, (copy) v_u_21, (copy) v_u_20, (copy) v_u_23, (copy) v_u_8, (copy) v_u_10, (copy) v_u_16, (copy) v_u_17, (copy) v_u_4, (copy) v_u_12, (copy) v_u_14, (copy) v_u_11, (copy) v_u_3, (copy) v_u_37
+    local v_u_39 = p_u_38.Part:Clone()
+    local v_u_40 = {}
+    local v_u_41 = {}
+    local v_u_42 = {}
+    local v_u_43 = {}
+    local v_u_44 = {}
+    for _, v45 in ipairs(v_u_39:GetDescendants()) do
+        local v46 = v45.ClassName
+        if v46 == "ParticleEmitter" then
+            v_u_44[#v_u_44 + 1] = v45
+        elseif v46 == "Beam" then
+            v_u_43[#v_u_43 + 1] = v45
+        elseif v46 == "Trail" then
+            v_u_42[#v_u_42 + 1] = v45
+        elseif v46 == "PointLight" or v46 == "SpotLight" then
+            v_u_40[#v_u_40 + 1] = v45
+        elseif v45:IsA("BasePart") then
+            v_u_41[#v_u_41 + 1] = v45
+        end
+    end
+    local v_u_47 = nil
+    local v_u_48 = nil
+    local v_u_49 = true
+    local function v_u_53()
+        -- upvalues: (ref) v_u_49, (copy) v_u_44, (copy) v_u_43, (copy) v_u_42, (ref) v_u_15, (copy) v_u_40, (copy) v_u_41, (ref) v_u_39
+        if v_u_49 then
+            v_u_49 = false
+            for _, v50 in ipairs(v_u_44) do
+                v50.Enabled = false
+                v50:Destroy()
+            end
+            for _, v51 in ipairs(v_u_43) do
+                v51.Enabled = false
+                v51:Destroy()
+            end
+            for _, v52 in ipairs(v_u_42) do
+                v52.Enabled = false
+                v52:Destroy()
+            end
+            v_u_15(v_u_44)
+            v_u_15(v_u_43)
+            v_u_15(v_u_42)
+            v_u_15(v_u_40)
+            v_u_15(v_u_41)
+            if v_u_39 then
+                v_u_39:Destroy()
+                v_u_39 = nil
+            end
+        end
+    end
+    local v116, v117 = pcall(function()
+        -- upvalues: (copy) p_u_38, (ref) v_u_39, (ref) v_u_48, (ref) v_u_47, (ref) v_u_22, (ref) v_u_13, (ref) v_u_6, (ref) v_u_24, (ref) v_u_9, (ref) v_u_25, (ref) v_u_5, (ref) v_u_7, (ref) v_u_2, (ref) v_u_21, (ref) v_u_20, (ref) v_u_23, (ref) v_u_8, (ref) v_u_10, (ref) v_u_16, (ref) v_u_17, (copy) v_u_44, (copy) v_u_40, (ref) v_u_4, (ref) v_u_12, (ref) v_u_14, (ref) v_u_11, (ref) v_u_3, (copy) v_u_43, (ref) v_u_37, (ref) v_u_49, (copy) v_u_53, (copy) v_u_42, (copy) v_u_41
+        if p_u_38.Position then
+            v_u_39.Position = p_u_38.Position
+        elseif p_u_38.Weld then
+            v_u_48 = v_u_39:FindFirstChild("Weld")
+            v_u_47 = v_u_39:IsA("Model")
+            if v_u_48 then
+                if p_u_38.C0 then
+                    v_u_48.C0 = p_u_38.C0
+                end
+                if v_u_47 then
+                    v_u_48.Part0 = v_u_39.PrimaryPart
+                    v_u_48.Part1 = p_u_38.WeldPart
+                    v_u_39.PrimaryPart.CFrame = p_u_38.WeldPart.CFrame * v_u_48.C0:Inverse()
+                else
+                    v_u_48.Part0 = v_u_39
+                    v_u_48.Part1 = p_u_38.WeldPart
+                    if not p_u_38.WeldPart then
+                        v_u_39:Destroy()
+                        v_u_39 = nil
+                        return
+                    end
+                end
+            else
+                v_u_48 = v_u_22("Weld")
+                if p_u_38.C0 then
+                    v_u_48.C0 = p_u_38.C0
+                end
+                if v_u_47 then
+                    v_u_48.Part0 = v_u_39.PrimaryPart
+                    v_u_48.Part1 = p_u_38.WeldPart
+                    v_u_39.PrimaryPart.Anchored = false
+                    v_u_39.PrimaryPart.CFrame = p_u_38.WeldPart.CFrame * v_u_48.C0:Inverse()
+                else
+                    v_u_48.Part0 = v_u_39
+                    v_u_48.Part1 = p_u_38.WeldPart
+                    v_u_39.Anchored = false
+                    if not p_u_38.WeldPart then
+                        v_u_39:Destroy()
+                        v_u_39 = nil
+                        v_u_48:Destroy()
+                        v_u_48 = nil
+                        return
+                    end
+                    v_u_39.CFrame = p_u_38.WeldPart.CFrame * v_u_48.C0:Inverse()
+                end
+                v_u_48.Parent = v_u_39
+            end
+        else
+            local v54 = v_u_39:IsA("Model")
+            local v55 = p_u_38.CFrameOffset and p_u_38.CFrame * p_u_38.CFrameOffset or p_u_38.CFrame
+            if v54 then
+                v_u_39:SetPrimaryPartCFrame(v55)
+            else
+                v_u_39.CFrame = v55
+            end
+        end
+        local v56
+        if p_u_38.Position then
+            v56 = p_u_38.Position
+        elseif p_u_38.CFrame then
+            v56 = p_u_38.CFrame.Position
+        elseif v_u_39:IsA("Model") then
+            v56 = v_u_39.PrimaryPart.CFrame.Position
+        else
+            v56 = v_u_39.CFrame.Position
+        end
+        if p_u_38.Anchor then
+            v_u_39.Anchored = true
+        end
+        if p_u_38.name then
+            v_u_39.Name = p_u_38.name
+        end
+        if p_u_38.Rocks then
+            if p_u_38.RocksDelay then
+                v_u_13(p_u_38.RocksDelay)
+            end
+            v_u_6({
+                ["Position"] = v56,
+                ["Speed"] = p_u_38.RocksSpeed,
+                ["Amount"] = p_u_38.RocksAmount
+            })
+        end
+        if p_u_38.Ground then
+            if p_u_38.GroundDelay then
+                v_u_13(p_u_38.GroundDelay)
+            end
+            local v57 = v_u_24()
+            v57.FilterDescendantsInstances = { v_u_9 }
+            v57.FilterType = Enum.RaycastFilterType.Include
+            v57.IgnoreWater = true
+            local v58 = workspace:Raycast(v56, Vector3.new(0, -20, 0), v57)
+            if v58 then
+                local v59 = p_u_38.Ground
+                local v60 = v58.Position
+                local v61 = {
+                    ["Position"] = v60,
+                    ["Range"] = v59.Range,
+                    ["GroundSize"] = v59.GroundSize1,
+                    ["Blacklist"] = v_u_25,
+                    ["MaxRocks"] = v59.MaxRocks1
+                }
+                local v62 = {
+                    ["Position"] = v60,
+                    ["Range"] = v59.Range * v59.SizeScale,
+                    ["GroundSize"] = v59.GroundSize2,
+                    ["Blacklist"] = v_u_25,
+                    ["MaxRocks"] = v59.MaxRocks2
+                }
+                v_u_5(v61)
+                v_u_5(v62)
+                if v59.Twice then
+                    v_u_5(v61)
+                    v_u_5(v62)
+                end
+            end
+        end
+        v_u_39.Parent = p_u_38.Parent or v_u_7
+        if p_u_38.Sound then
+            local v63 = p_u_38.Sound:Clone()
+            v63.Parent = v_u_39
+            v_u_2:AddItem(v63, p_u_38.Debris or 5)
+            v63:Play()
+        end
+        if p_u_38.SnapToGround then
+            local v64 = v_u_23(v56, Vector3.new(0, -15, 0))
+            local v65 = { v_u_7, v_u_8, v_u_39 }
+            local _, v66, v67 = workspace:FindPartOnRayWithIgnoreList(v64, v65)
+            local v68 = v_u_39:IsA("Model")
+            local v69 = v68 and v_u_39.PrimaryPart.Size.Y or v_u_39.Size.Y
+            local v70 = v66.x
+            local v71 = v66.z
+            local v72 = v66 + v67 * (v69 / 2)
+            local v73 = v72.X
+            local v74 = v72.Y
+            local v75 = v72.Z
+            local v76 = v_u_20(v70, -(v67.x * (v70 - v73) + v67.z * (v71 - v75)) / v67.y + v74 + v69 + 0.1, v71)
+            if v68 then
+                v_u_39.PrimaryPart.CFrame = v_u_21(v76, v76 + v67) * v_u_21(v_u_20(), Vector3.new(0, 1, 0)):inverse()
+            else
+                v_u_39.CFrame = v_u_21(v76 + Vector3.new(0, -1.25, 0), v76 + v67) * v_u_21(v_u_20(), Vector3.new(0, 1, 0)):inverse()
+            end
+        end
+        if p_u_38.ReColor then
+            local v77 = v_u_23(p_u_38.RayPosition, p_u_38.RecolorDirection or Vector3.new(0, -5, 0))
+            local v78 = { v_u_8, v_u_7 }
+            local v79, _, _, v80 = workspace:FindPartOnRayWithIgnoreList(v77, v78)
+            if v79 then
+                if p_u_38.ReColorPart then
+                    v_u_39.Color = v79.Color
+                    v_u_39.Material = v79.Material
+                end
+                local v81 = v79:IsA("Terrain") and v_u_10:GetMaterialColor(v80) or v79.Color
+                local v82 = v_u_16({ v_u_17(0, v81), v_u_17(1, v81) })
+                local v83 = p_u_38.ReColor
+                for _, v84 in ipairs(v_u_44) do
+                    if v84.Name == v83 then
+                        v84.Color = v82
+                    end
+                end
+            end
+        end
+        local v85 = p_u_38.LightTweenTime or 0.5
+        local v86 = p_u_38.Debris
+        for _, v_u_87 in ipairs(v_u_40) do
+            local v88 = v_u_87.Brightness
+            v_u_87.Brightness = 0
+            v_u_4.Tween({
+                ["Time"] = v85,
+                ["instance"] = v_u_87,
+                ["Properties"] = {
+                    ["Brightness"] = v88
+                }
+            }):Play()
+            v_u_12(v86, function()
+                -- upvalues: (ref) v_u_4, (copy) v_u_87
+                local v89 = {
+                    ["Time"] = 0.3,
+                    ["instance"] = v_u_87,
+                    ["Properties"] = {
+                        ["Brightness"] = 0
+                    }
+                }
+                v_u_4.Tween(v89):Play()
+            end)
+        end
+        local v_u_90 = shared.LowerParticles
+        if p_u_38.PureEnable then
+            if p_u_38.Enable then
+                for _, v91 in ipairs(v_u_44) do
+                    v91.Enabled = true
+                end
+            end
+        elseif p_u_38.Freeze then
+            local v_u_92 = TweenInfo.new(0.05, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+            for _, v_u_93 in ipairs(v_u_44) do
+                v_u_14(function()
+                    -- upvalues: (ref) v_u_13, (copy) v_u_93, (copy) v_u_90, (ref) v_u_11, (ref) v_u_12, (ref) v_u_3, (copy) v_u_92
+                    v_u_13(v_u_93:GetAttribute("EmitDelay") or 0)
+                    local v94 = v_u_93:GetAttribute("EmitCount")
+                    if v94 then
+                        if v_u_90 and v94 >= 5 then
+                            v94 = v_u_11(1, v94 * 0.2)
+                        end
+                        v_u_93:Emit(v94)
+                    end
+                    local v95 = v_u_93:GetAttribute("EmitDuration")
+                    if v95 then
+                        v_u_93.Enabled = true
+                        v_u_12(v95, function()
+                            -- upvalues: (ref) v_u_93
+                            v_u_93.Enabled = false
+                        end)
+                    end
+                    v_u_12(0.1, function()
+                        -- upvalues: (ref) v_u_93, (ref) v_u_3, (ref) v_u_92, (ref) v_u_13
+                        local v96 = v_u_93.TimeScale
+                        v_u_3:Create(v_u_93, v_u_92, {
+                            ["TimeScale"] = 0.005
+                        }):Play()
+                        v_u_13(1.5)
+                        v_u_3:Create(v_u_93, v_u_92, {
+                            ["TimeScale"] = v96
+                        }):Play()
+                    end)
+                end)
+            end
+        else
+            local v97 = p_u_38.Enabled
+            for _, v_u_98 in ipairs(v_u_44) do
+                local v99 = v_u_98:GetAttribute("EmitDelay")
+                local v_u_100 = v_u_98:GetAttribute("EmitDuration")
+                local v_u_101 = v_u_98:GetAttribute("EmitCount")
+                if v97 then
+                    v_u_98.Enabled = true
+                end
+                if v99 and v99 > 0 then
+                    v_u_12(v99, function()
+                        -- upvalues: (ref) v_u_101, (copy) v_u_90, (ref) v_u_11, (copy) v_u_98, (copy) v_u_100, (ref) v_u_12
+                        if v_u_101 then
+                            if v_u_90 and v_u_101 >= 5 then
+                                v_u_101 = v_u_11(1, v_u_101 * 0.2)
+                            end
+                            v_u_98:Emit(v_u_101)
+                        end
+                        if v_u_100 then
+                            v_u_98.Enabled = true
+                            v_u_12(v_u_100, function()
+                                -- upvalues: (ref) v_u_98
+                                v_u_98.Enabled = false
+                            end)
+                        end
+                    end)
+                else
+                    if v_u_101 then
+                        if v_u_90 and v_u_101 >= 8 then
+                            v_u_101 = v_u_11(1, v_u_101 * 0.5)
+                        end
+                        v_u_98:Emit(v_u_101)
+                    end
+                    if v_u_100 then
+                        v_u_98.Enabled = true
+                        v_u_12(v_u_100, function()
+                            -- upvalues: (copy) v_u_98
+                            v_u_98.Enabled = false
+                        end)
+                    end
+                end
+            end
+            for _, v_u_102 in ipairs(v_u_43) do
+                local v103 = v_u_102:GetAttribute("EmitDelay")
+                local v_u_104 = v_u_102:GetAttribute("EmitDuration")
+                if v103 and v103 > 0 then
+                    v_u_12(v103, function()
+                        -- upvalues: (copy) v_u_102, (copy) v_u_104, (ref) v_u_12
+                        v_u_102.Enabled = true
+                        if v_u_104 then
+                            v_u_12(v_u_104, function()
+                                -- upvalues: (ref) v_u_102
+                                v_u_102.Enabled = false
+                            end)
+                        end
+                    end)
+                else
+                    v_u_102.Enabled = true
+                    if v_u_104 then
+                        v_u_12(v_u_104, function()
+                            -- upvalues: (copy) v_u_102
+                            v_u_102.Enabled = false
+                        end)
+                    end
+                end
+            end
+        end
+        if not p_u_38.CustomBeams then
+            local v_u_105 = p_u_38.BeamTween or 0.25
+            for _, v_u_106 in ipairs(v_u_43) do
+                v_u_14(function()
+                    -- upvalues: (copy) v_u_106, (ref) v_u_13, (copy) v_u_105, (ref) v_u_11, (ref) v_u_37
+                    local v107 = v_u_106:GetAttribute("EmitDuration")
+                    if v107 then
+                        v_u_13((v_u_11(0, v107 - v_u_105)))
+                    end
+                    v_u_37(v_u_106, v_u_105)
+                end)
+            end
+        end
+        v_u_12(v86 / 2, function()
+            -- upvalues: (ref) v_u_40, (ref) v_u_4
+            for _, v108 in ipairs(v_u_40) do
+                if v108:IsA("PointLight") then
+                    local v109 = {
+                        ["Time"] = 0.5,
+                        ["instance"] = v108,
+                        ["Properties"] = {
+                            ["Brightness"] = 0
+                        }
+                    }
+                    v_u_4.Tween(v109):Play()
+                end
+            end
+        end)
+        v_u_12(v86, function()
+            -- upvalues: (ref) v_u_49, (ref) p_u_38, (ref) v_u_53, (ref) v_u_44, (ref) v_u_43, (ref) v_u_14, (ref) v_u_37, (ref) v_u_42, (ref) v_u_39, (ref) v_u_4, (ref) v_u_41, (ref) v_u_12
+            if v_u_49 then
+                if p_u_38.InstantDestroy then
+                    v_u_53()
+                else
+                    for _, v110 in ipairs(v_u_44) do
+                        v110.Enabled = false
+                    end
+                    for _, v_u_111 in ipairs(v_u_43) do
+                        v_u_14(function()
+                            -- upvalues: (ref) v_u_37, (copy) v_u_111
+                            v_u_37(v_u_111, 0.5)
+                        end)
+                    end
+                    if p_u_38.DestroyTrail then
+                        for _, v112 in ipairs(v_u_42) do
+                            v112.Enabled = false
+                        end
+                    end
+                    if v_u_39:IsA("BasePart") then
+                        local v113 = {
+                            ["Time"] = 0.25,
+                            ["instance"] = v_u_39,
+                            ["Properties"] = {
+                                ["Transparency"] = 1
+                            }
+                        }
+                        v_u_4.Tween(v113):Play()
+                    end
+                    for _, v114 in ipairs(v_u_41) do
+                        local v115 = {
+                            ["Time"] = 0.25,
+                            ["instance"] = v114,
+                            ["Properties"] = {
+                                ["Transparency"] = 1
+                            }
+                        }
+                        v_u_4.Tween(v115):Play()
+                    end
+                    v_u_12(3, v_u_53)
+                end
+            else
+                return
+            end
+        end)
+    end)
+    if not v116 or v117 then
+        v_u_53()
+        warn(v117)
+    end
+end
